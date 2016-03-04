@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.gstatic.com https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net http://google-analytics.com https://google-analytics.com http://ajax.googleapis.com https://ajax.googleapis.com http://cdnjs.cloudflare.com https://cdnjs.cloudflare.com; connect-src 'self' http://usvsolutions.com https://usvsolutions.com; img-src 'self' data:; style-src 'self' http://fonts.googleapis.com https://fonts.googleapis.com; frame-src http://*.facebook.com https://www.facebook.com http://www.facebook.com https://*.facebook.com;
+        child-src http://*.facebook.com https://www.facebook.com http://www.facebook.com https://*.facebook.com;" >
+        <!-- child-src same as frame-src -->
+
+
+        <meta property="og:type"   content="article" />
+        <meta name="title" content="Formulary Medical app" />
+        <meta property="og:title" content="Formulary Medical app" />
+        <meta property="og:url" content="https://formularymedical.com" />
+        <meta name="description" content="Look up through medical formularies of 50 states, 12,000 health plans and 2,000 drugs. On your mobile devices. Easy to share and copy to other apps."/>
+        <meta property=”og:description” content="Look up through medical formularies of 50 states, 12,000 health plans and 2,000 drugs. On your mobile devices. Easy to share and copy to other apps."/>
+        <meta property="og:image" content="http://usvsolutions.com/images/for.png"/>
+        <meta property="og:image:secure_url" content="https://www.dropbox.com/s/v8vi2cnfaocykh1/02-Flat-Metal-Icon_1024.png" />
+
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <!--<link rel="stylesheet" type="text/css" href="css/ratchet.device.min.css" />-->
+        <link href="ratchet/ratchet.min.css" rel="stylesheet">
+        <link href="ratchet/ratchet-theme-ios.css" rel="stylesheet">
+
+        <!--<link href="ratchet/ratchet-theme-android.css" rel="stylesheet">-->
+        <link href="css/pageslider.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+        <link href="css/compass/stylesheets/styles.css" rel="stylesheet">
+        <title>Formulary Medical</title>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <div id="loading"></div>
+
+        <script src="build/lib/fastclick.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="lib/backbone.js"></script>
+        <script src="lib/pageslider.js"></script>
+        <script src="ratchet/ratchet.min.js"></script>
+        <!--<script src="ratchet/modals.js"></script>-->
+        <script src="js/app.js"></script>
+        <script src="js/utils/templates.js"></script>
+        <script src="js/utils/restful.js"></script>
+        <script src="js/utils/misc.js"></script>
+
+        <script src="js/models/DrugModel.js"></script>
+        <script src="js/models/PlanModel.js"></script>
+        <script src="js/models/FormularyModel.js"></script>
+
+        <!--<script src="js/adapters/memory-adapter.js"></script>-->
+        <script src="build/js/adapters/memory-adapter.min.js"></script>
+        <script src="js/adapters/rest-adapter.js"></script>
+        <script src="js/routers/AppRouter.js"></script>
+
+        <script src="js/views/HomeView.js"></script>
+        <script src="js/views/PlanListView.js"></script>
+        <script src="js/views/PlanView.js"></script>
+        <script src="js/views/DrugListView.js"></script>
+        <script src="js/views/DrugListGoToFormularyView.js"></script>
+        <script src="js/views/DrugView.js"></script>
+        <script src="js/views/FormularyView.js"></script>
+
+        <script src="cordova.js"></script>
+    </body>
+</html>
