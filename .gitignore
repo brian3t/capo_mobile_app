@@ -1,16 +1,13 @@
+/node_modules
 # Created by .gitignore support plugin (hsz.mobi)
 
 .idea
-.idea/**
 ratchet/.sass-cache
 ratchet/.sass-cache/**
 www/css/compass/.sass-cache
-www/css/compass/.sass-cache/**
 www/css/.sass-cache
 www/css/.sass-cache/**
 www/node_modules
 platforms
-platforms/**
 plugins
-plugins/**
 platforms/ios/www

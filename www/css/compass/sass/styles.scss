@@ -1,21 +1,14 @@
 @import "compass";
-html{width: 100%;}
+html{width: 100%;   }
 body{
-  font-family: "Quicksand", sans-serif;
-  font-size: 19px;
   background-color: inherit;
   position: absolute;
   min-height: 100%;
 }
 button, input, select, textarea {
-  font-family: "Quicksand", sans-serif;
 }
 .content{
-  background-color: rgb(208,228,247);
-  @include filter-gradient(#d0e4f7, #87bcea, horizontal);
-  @include background-image(linear-gradient(left top,  rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(80,152,211,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%));
-
-
+  background-color: white;
 }
 .more-actions * {
   margin-top: 10px;
@@ -43,6 +36,7 @@ ul {
 }
 .title{
   font-weight: 600;
+  background-color: #ddd;
 }
 #loading{
   background: url("../../../img/spinner-blue.gif") no-repeat 50%;
@@ -146,8 +140,6 @@ select{
 }
 
 header.bar {
-  background: url("../../../img/top.png")  center no-repeat;
-  background-size: 100% 100%;
 }
 ul:empty{
   border: none;}
@@ -155,4 +147,27 @@ ul:empty{
 .pointer{cursor: pointer}
 /* fix ratchet */
 header.bar.bar-nav{-webkit-transform: translateZ(0)}
+.table-view{background: inherit}
+.input-row{border: none; margin-bottom: 6px;}
 /* end fix ratchet */
+.col5{width: 5%}
+.col1{width: 10%}
+.col2{width: 20%}
+.col3{width: 30%}
+.col4{width: 40%}
+.col5{width: 50%}
+.col6{width: 60%}
+.col7{width: 70%}
+.col8{width: 80%}
+.col9{width: 90%}
+.col95{width: 95%}
+.col10{width: 100%}
+.float_right{float:right}
+.input-group i {float: right}
+button{text-transform: uppercase; margin: 12px 0;}
+div#ad{
+  height: 200px;
+  background-color: #ddd;
+  margin: 12px 0;
+}
+.content.home{text-align: center}
