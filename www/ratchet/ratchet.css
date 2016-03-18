@@ -141,7 +141,7 @@ select,
 textarea {
   margin: 0;
   font: inherit;
-  color: inherit;
+  color: white;
 }
 
 button {
@@ -243,7 +243,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 17px;
   line-height: 21px;
-  color: #000;
   background-color: #fff;
 }
 
@@ -362,7 +361,7 @@ p {
   display: inline-block;
   padding: 6px 8px 7px;
   margin-bottom: 0;
-  font-size: 12px;
+  /* font-size: 12px; */
   font-weight: 400;
   line-height: 1;
   color: #333;
@@ -384,8 +383,8 @@ p {
 
 .btn-primary {
   color: #fff;
-  background-color: #428bca;
-  border: 1px solid #428bca;
+  background-color: #0c9648;
+  border: 1px solid #0a9446;
 }
 .btn-primary:active, .btn-primary.active {
   color: #fff;
@@ -446,9 +445,10 @@ p {
 .btn-block {
   display: block;
   width: 100%;
-  padding: 15px 0;
+  padding: 16px 0;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 120%;
+  font-weight: bolder;
 }
 
 input[type="submit"],
@@ -489,14 +489,19 @@ input[type="button"] {
   right: 0;
   left: 0;
   z-index: 10;
-  height: 44px;
-  padding-right: 10px;
-  padding-left: 10px;
-  background-color: white;
+  /* height: 44px; */
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 17px;
+  padding-bottom: 12px;
+  background: #58567f;/* Old browsers */
+  background: -moz-linear-gradient(top, #58567f 0%, #293063 100%);/* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #58567f 0%,#293063 100%);/* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #58567f 0%,#293063 100%);/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58567f', endColorstr='#293063',GradientType=0 );/* IE6-9 */
   border-bottom: 1px solid #ddd;
-
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .bar-header-secondary {
@@ -504,7 +509,7 @@ input[type="button"] {
 }
 
 .bar-footer {
-  bottom: 0;
+  bottom: 21px;
 }
 
 .bar-footer-secondary {
@@ -518,7 +523,7 @@ input[type="button"] {
 .bar-footer,
 .bar-footer-secondary,
 .bar-footer-secondary-tab {
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
   border-bottom: 0;
 }
 
@@ -826,7 +831,6 @@ textarea,
 button,
 select {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 17px;
 }
 
 select,
@@ -883,7 +887,7 @@ select {
 }
 
 .input-group {
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .input-group input,
@@ -899,22 +903,21 @@ select {
 }
 
 .input-row {
-  height: 35px;
+  height: 45px;
   overflow: hidden;
-  border-bottom: 1px solid #ddd;
 }
 
 .input-row label {
   float: left;
-  width: 35%;
-  padding: 8px 15px;
+  width: 15%;
+  padding: 10px 15px;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   line-height: 1.1;
 }
 
 .input-row input {
   float: right;
-  width: 65%;
+  width: 85%;
   padding-left: 0;
   margin-bottom: 0;
   border: 0;

@@ -1,14 +1,15 @@
 @import "compass";
 html{width: 100%;   }
 body{
+  font-family: Arial;
+  font-size: 10pt;
   background-color: inherit;
   position: absolute;
   min-height: 100%;
+  color: white;
 }
-button, input, select, textarea {
-}
-.content{
-  background-color: white;
+button, input, input:-webkit-autofill, select, textarea {
+  color: white !important;
 }
 .more-actions * {
   margin-top: 10px;
@@ -45,9 +46,6 @@ ul {
   position: relative;
   top: 150px;
   background-size: 50px;
-}
-.content {
-//  position: absolute;
 }
 select{
   font-family: "Quicksand", sans-serif;
@@ -148,7 +146,7 @@ ul:empty{
 /* fix ratchet */
 header.bar.bar-nav{-webkit-transform: translateZ(0)}
 .table-view{background: inherit}
-.input-row{border: none; margin-bottom: 6px;}
+.input-row{margin-bottom: 6px;border-bottom: 1px solid #aaa;}
 /* end fix ratchet */
 .col5{width: 5%}
 .col1{width: 10%}
@@ -159,9 +157,11 @@ header.bar.bar-nav{-webkit-transform: translateZ(0)}
 .col6{width: 60%}
 .col7{width: 70%}
 .col8{width: 80%}
+.col85{width: 85%}
 .col9{width: 90%}
 .col95{width: 95%}
 .col10{width: 100%}
+.center{margin: 0 auto;}
 .float_right{float:right}
 .input-group i {float: right}
 button{text-transform: uppercase; margin: 12px 0;}
@@ -170,4 +170,55 @@ div#ad{
   background-color: #ddd;
   margin: 12px 0;
 }
-.content.home{text-align: center}
+.content.home{text-align: center;
+background-color: rgba(0,0,85,0.45);
+}
+div.page{
+  background-image: url("/img/bk1.png");
+  background-size: cover;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    white;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    white;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    white;
+}
+input:-webkit-autofill, input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    white !important;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    white;
+  opacity:  1;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    white;
+  opacity:  1;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    white;
+}
+input:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+  color:    white;
+}
+input[placeholder], [placeholder], *[placeholder] {
+  color: white !important;
+}
+#app_logo{
+  background-image: url("/img/app_logo.png");
+  background-size: cover;
+  margin: 10% auto 12%;
+  width: 100px;
+  height:100px;
+}
+.fa{
+  font-size: initial;
+}

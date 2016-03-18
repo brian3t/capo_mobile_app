@@ -261,7 +261,11 @@
                 clearTimeout(shimTransitionEnd);
                 options.afterTransition(false);
             };
-
+            /*brian3t fixes safari - Safari in iOS auto resizes the url bar. This adapts to that*/
+            $('body').scrollTop(0);
+            $('header').toggle();
+            $('header').toggle();
+            /*end brian3t fixes safari*/
         },
     };
 

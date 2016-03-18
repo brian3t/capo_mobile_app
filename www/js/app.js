@@ -2,7 +2,7 @@ var app = {views: {}, models: {}, routers: {}, utils: {}, adapters: {}};
 var config = {restUrl: "https://usvsolutions.com/formulary_api/f/"};
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
-    app.utils.templates.load(["HomeView", "DrugView", "DrugListItemView", "DrugListGoToFormularyItemView", "PlanListItemView", "FormularyView"], function () {
+    app.utils.templates.load(["HomeView", "DashboardView", "DrugListItemView", "DrugListGoToFormularyItemView", "PlanListItemView", "FormularyView"], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.start();
     });
