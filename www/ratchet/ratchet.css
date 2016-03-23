@@ -485,19 +485,19 @@ input[type="button"] {
 }
 
 .bar {
-  position: fixed;
+   position: fixed;
   right: 0;
   left: 0;
   z-index: 10;
   /* height: 44px; */
-  padding-right: 25px;
-  padding-left: 25px;
+   padding-right: 25px;
+   padding-left: 25px;
   padding-top: 17px;
   padding-bottom: 12px;
-  background: #58567f;/* Old browsers */
+   background: #58567f;  /*Old browsers */
   background: -moz-linear-gradient(top, #58567f 0%, #293063 100%);/* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #58567f 0%,#293063 100%);/* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #58567f 0%,#293063 100%);/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   background: -webkit-linear-gradient(top, #58567f 0%,#293063 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to bottom, #58567f 0%,#293063 100%);  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58567f', endColorstr='#293063',GradientType=0 );/* IE6-9 */
   border-bottom: 1px solid #ddd;
   -webkit-backface-visibility: hidden;
@@ -509,7 +509,8 @@ input[type="button"] {
 }
 
 .bar-footer {
-  bottom: 21px;
+  bottom: 10px;
+  position: fixed;
 }
 
 .bar-footer-secondary {
@@ -1011,35 +1012,24 @@ select {
 .popover {
   position: fixed;
   top: 55px;
-  left: 50%;
-  z-index: 20;
+  /* left: 50%; */
+  right: 0;
   display: none;
   width: 280px;
   margin-left: -140px;
-  background-color: white;
+  background-color: #777;
   border-radius: 6px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, .1);
-          box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, .1);
   opacity: 0;
   -webkit-transition: all .25s linear;
-     -moz-transition: all .25s linear;
-          transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  transition: all .25s linear;
   -webkit-transform: translate3d(0, -15px, 0);
-      -ms-transform: translate3d(0, -15px, 0);
-          transform: translate3d(0, -15px, 0);
+  -ms-transform: translate3d(0, -15px, 0);
+  transform: translate3d(0, -15px, 0);
 }
-.popover:before {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -15px;
-  content: '';
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid white;
-  border-left: 15px solid transparent;
-}
+
 .popover.visible {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
@@ -1080,7 +1070,7 @@ select {
   margin-bottom: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-top: 0;
   border-bottom: 0;
   border-radius: 6px;

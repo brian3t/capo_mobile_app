@@ -90,22 +90,25 @@ app.utils.misc = (function () {
 
 
         },
-        afterBBRender = function(){
-            if (isInWeb){
+        afterBBRender = function () {
+            if (isInWeb) {
                 $('.cordova-only').hide();
             }
-            else{
+            else {
                 $('.non-cordova-only').hide();
             }
         },
-        initFb= function(){
-            (function(d, s, id) {
+        initFb = function () {
+            (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
+                js = d.createElement(s);
+                js.id = id;
                 js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1503339389930016&version=v1.0";
-                try {fjs.parentNode.insertBefore(js, fjs);}
-                catch (e){
+                try {
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+                catch (e) {
                     console.log('Facebook sdk error: '.e);
                 }
             }(document, 'script', 'facebook-jssdk'));
@@ -115,8 +118,29 @@ app.utils.misc = (function () {
         USSTATES: USSTATES,
         bindModal: bindModal,
         applyInAppBrowser: applyInAppBrowser,
-        afterBBRender : afterBBRender,
-        initFb : initFb
+        afterBBRender: afterBBRender,
+        initFb: initFb,
+        show_message: function (message, callback, title, buttonName) {
+            title = title || "default title";
+            buttonName = buttonName || 'OK';
+
+            if (navigator.notification && navigator.notification.alert) {
+
+                navigator.notification.alert(
+                    message,    // message
+                    callback,   // callback
+                    title,      // title
+                    buttonName  // buttonName
+                );
+
+            } else {
+
+                alert(message);
+                if (typeof callback === "function") {
+                    callback();
+                }
+            }
+        }
     };
 
 }());

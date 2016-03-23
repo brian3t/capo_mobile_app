@@ -10,7 +10,7 @@ app.views.DashboardView = Backbone.View.extend({
     },
 
     events: {
-        "click .btn-back": "back",
+        "click .logout": "back"
     },
 
     back: function(event) {

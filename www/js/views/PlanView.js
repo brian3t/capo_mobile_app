@@ -8,6 +8,8 @@ app.views.PlanView = Backbone.View.extend({
     render: function () {
         this.$el.html(this.template(this.model.attributes));
         $('#plan-list', this.el).append(this.searchresultsView.render().el);
+
+
        return this;
     },
 

@@ -6,7 +6,7 @@ html {
 /* line 3, ../sass/styles.scss */
 body {
     font-family: Arial;
-    font-size: 14pt;
+    font-size: 12pt;
     background-color: inherit;
 + position: absolute;
     min-height: 100%;
@@ -67,7 +67,7 @@ ul {
 
 /* line 42, ../sass/styles.scss */
 #loading {
-    background: url("../../../img/spinner-blue.gif") no-repeat 50%;
+    background: url("/img/spinner-blue.gif") no-repeat 50%;
     width: 100%;
     min-height: 50px;
     position: relative;
@@ -219,7 +219,7 @@ header.bar.bar-nav {
 
 /* line 149, ../sass/styles.scss */
 .input-row {
-    margin-bottom: 21px;
+    margin-bottom: 19px;
     border-bottom: 1px solid #aaa;
 }
 
@@ -322,9 +322,11 @@ div#ad {
     text-align: center;
     background-color: rgba(0, 0, 85, 0.55);
 }
+
 .content.dashboard {
     background-color: rgba(0, 0, 0, 0.2);
 }
+
 /* line 176, ../sass/styles.scss */
 div.page {
     background-size: cover;
@@ -333,6 +335,7 @@ div.page {
 div.page[current_view=home] {
     background-image: url("/img/bk1.png");
 }
+
 div.page[current_view=dashboard] {
     background-image: url("/img/bk2.png");
 }
@@ -403,13 +406,57 @@ input[placeholder], [placeholder], *[placeholder] {
 /* line 215, ../sass/styles.scss */
 #app_logo {
     background-image: url("/img/app_logo.png");
-    background-size: cover;
-    margin: 11% auto 12%;
-    width: 130px;
-    height: 130px;
+    width: 48%;
+    background-size: 63%;
+    position: relative;
+    height: 0;
+    padding-bottom: 42%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    margin: 4% 25% 0%;
+    background-position: center -13%;
 }
 
 /* line 222, ../sass/styles.scss */
 .fa {
     font-size: initial;
+}
+
+.btn-big-square {
+    width: 48%;
+    background-size: 63%;
+    position: relative;
+    height: 0;
+    padding-bottom: 42%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center -13%;
+}
+.btn-big-square:first-child{
+    margin-right: 2%;
+}
+.btn-big-square > span {
+    position: absolute;
+    bottom: 15%;
+    text-align: center;
+    left: 0;
+    width: 100%;
+    font-size: smaller;
+}
+
+button.request {
+    background-image: url("/img/rider.png");
+}
+
+button.offer {
+    background-image: url("/img/driver.png");
+}
+
+#dashboard_info {
+    min-height: 220px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 12px;
 }

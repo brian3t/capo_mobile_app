@@ -1,5 +1,8 @@
 var app = {views: {}, models: {}, routers: {}, utils: {}, adapters: {}};
-var config = {restUrl: "https://usvsolutions.com/formulary_api/f/"};
+var config = {
+    restUrl: "https://usvsolutions.com/formulary_api/f/",
+    baseUrl: 'https://tdm.commuterconnections.org/mwcog/'
+};
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
     app.utils.templates.load(["HomeView", "DashboardView", "DrugListItemView", "DrugListGoToFormularyItemView", "PlanListItemView", "FormularyView"], function () {
