@@ -1,7 +1,8 @@
 var app = {views: {}, models: {}, routers: {}, utils: {}, adapters: {}};
 var config = {
     restUrl: "https://usvsolutions.com/formulary_api/f/",
-    baseUrl: 'https://tdm.commuterconnections.org/mwcog/'
+    commuterUrl: 'https://tdm.commuterconnections.org/mwcog/',
+    baseUrl: 'http://54.183.202.1/'
 };
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
@@ -67,4 +68,7 @@ else {
     $(document).ready(function () {
         backboneInit();
     });
+    localStorage.clear();
 }
+
+Backbone.LocalStorage.setPrefix('capo');

@@ -35,23 +35,29 @@ app.views.HomeView = Backbone.View.extend({
 
         if (u != '' && p != '') {
 
-            $.get(config.baseUrl + "json?action=login&username=" + u + "&password=" + p + '&password_saved=' + homeview_class.hashed, function (res) {
+            $.get(config.commuterUrl + "json?action=login&username=" + u + "&password=" + p + '&password_saved=' + homeview_class.hashed, function (res) {
                 if (res.statusCode === 1) {
-                    var addresses = res.addresses;
-                    window.localStorage.setItem("idCommuter", res.commuter);
-                    window.localStorage.setItem("enrolled", res.enrolled);
-                    window.localStorage.setItem("userName", u);
-                    window.localStorage.setItem("addresses", JSON.stringify(addresses));
-                    window.localStorage.setItem("commuterData", JSON.stringify(res.commuterData));
-                    window.localStorage.setItem("arriveAfter", res.commuterData.arriveAfter);
-                    if (rememberMe) {
-                        window.localStorage.setItem("hashedPassword", res.hashedPassword);
-                        window.localStorage.setItem("rememberCheckbox", true);
-                        window.localStorage.setItem("username", u);
-                    }
+                    // var addresses = res.addresses;
+                    // window.localStorage.setItem("idCommuter", res.commuter);
+                    // window.localStorage.setItem("enrolled", res.enrolled);
+                    // window.localStorage.setItem("userName", u);
+                    // window.localStorage.setItem("addresses", JSON.stringify(addresses));
+                    // window.localStorage.setItem("commuterData", JSON.stringify(res.commuterData));
+                    // window.localStorage.setItem("arriveAfter", res.commuterData.arriveAfter);
+                    // if (rememberMe) {
+                    //     window.localStorage.setItem("hashedPassword", res.hashedPassword);
+                    //     window.localStorage.setItem("rememberCheckbox", true);
+                    //     window.localStorage.setItem("username", u);
+                    // }
+                    
+                    res.statusCode = null;
+                    
+                    app.cuser.save(res, {forceRefresh:true});
 
                     window.localStorage.setItem("justLoggedIn", 1);
-                    app.router.navigate('/dashboard');app.router.dashboard();
+                    console.log(localStorage);
+                    // app.router.navigate('/dashboard');app.router.dashboard();
+
 
                 } else {
                     homeview_class.$submit_button.removeAttr("disabled");
@@ -89,7 +95,18 @@ app.views.HomeView = Backbone.View.extend({
     $password: '',
     hashedPassword: '',
     hashed: true,
-    remember: true,
-    
-    
+    remember: true
+
+});
+
+app.cuser = new app.models.Cuser;
+var Model = Backbone.Model.extend({
+    urlRoot: '/tpl/fixtures.json',
+    localStorage: true
+});
+var model = new Model({});
+model.fetch({
+    success: function(model, response, options){
+        console.log(Backbone.LocalStorage._getData('/tpl/fixtures.json'));
+    }
 });
