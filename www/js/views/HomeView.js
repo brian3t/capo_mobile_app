@@ -49,9 +49,14 @@ app.views.HomeView = Backbone.View.extend({
                     //     window.localStorage.setItem("rememberCheckbox", true);
                     //     window.localStorage.setItem("username", u);
                     // }
-                    
+
                     res.statusCode = null;
-                    
+                    window.localStorage.setItem('cuser', JSON.stringify(res));
+
+                    //only pass a portion of it to Backbone
+                    res = _.pick(res, 'commuter');
+                    // res = _.pick(res, 'statusCode', 'statusDesciption', 'enrolled', 'commuter', 'firstName', 'hashedPassword');
+                    // res['enrolled'] = (res['enrolled'] == true?1:0);
                     app.cuser.save(res, {forceRefresh:true});
 
                     window.localStorage.setItem("justLoggedIn", 1);

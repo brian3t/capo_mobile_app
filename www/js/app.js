@@ -1,8 +1,8 @@
 var app = {views: {}, models: {}, routers: {}, utils: {}, adapters: {}};
 var config = {
-    restUrl: "https://usvsolutions.com/formulary_api/f/",
+    restUrl: "http://ec2-54-183-202-1.us-west-1.compute.amazonaws.com/v1/",
     commuterUrl: 'https://tdm.commuterconnections.org/mwcog/',
-    baseUrl: 'http://54.183.202.1/'
+    baseUrl: 'http://ec2-54-183-202-1.us-west-1.compute.amazonaws.com/v1/'
 };
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();

@@ -2,7 +2,7 @@ app.models.Cuser = Backbone.Model.extend({
 
     initialize:function () {
     },
-    urlRoot: config.baseUrl,
+    urlRoot: config.baseUrl + 'cuser',
     localStorage: true
 }
     // ,
