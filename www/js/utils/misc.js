@@ -1,6 +1,4 @@
-/**
- * Created by tri on 11/21/14.
- */
+"use strict";
 app.utils.misc = (function () {
     var USSTATES = {
             "AL": "Alabama",
@@ -144,3 +142,28 @@ app.utils.misc = (function () {
     };
 
 }());
+String.prototype.toUnderscore = function () {
+    return this.replace(/([A-Z])/g, function ($1) {
+        return "_" + $1.toLowerCase();
+    });
+};
+function array_keys_to_underscore(array_input) {
+    var tmp = [];
+    var keys = Object.keys(array_input);
+    for (var j = 0; j < keys.length; j++) {
+        var key = keys[j].toUnderscore();
+        tmp[key] = array_input[keys[j]];
+    }
+    return tmp;
+}
+function ucfirst(str) {
+    // split string
+    var firstChar = str.substring(0,1);
+    var remainChar = str.substring(1);
+
+    // convert case
+    firstChar = firstChar.toUpperCase();
+    remainChar = remainChar.toLowerCase();
+
+    return firstChar + remainChar;
+}

@@ -460,3 +460,4 @@ button.offer {
     position: fixed;
     bottom: 12px;
 }
+.ucfirst{text-transform: capitalize;}

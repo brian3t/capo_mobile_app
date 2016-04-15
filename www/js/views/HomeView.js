@@ -51,17 +51,26 @@ app.views.HomeView = Backbone.View.extend({
                     // }
 
                     res.statusCode = null;
-                    window.localStorage.setItem('cuser', JSON.stringify(res));
 
                     //only pass a portion of it to Backbone
-                    res = _.pick(res, 'commuter');
-                    // res = _.pick(res, 'statusCode', 'statusDesciption', 'enrolled', 'commuter', 'firstName', 'hashedPassword');
+                    // res = _.pick(res, 'commuter');
+                    res.email = res.commuterData.email;
+                    res.username = res.commuterData.userName;
+                    if (u !== res.username){
+                        console.log('Error username mismatch' + res.username);
+                    }
+                    res.firstName = ucfirst(res.firstName);
+
+                    window.localStorage.setItem('cuser', JSON.stringify(res));
+                    console.log(window.localStorage.getItem('cuser'));
+                    res = _.pick(res, 'statusCode', 'statusDescription', 'enrolled', 'commuter', 'firstName', 'hashedPassword', 'email', 'username');
+                    res = array_keys_to_underscore(res);
+
                     // res['enrolled'] = (res['enrolled'] == true?1:0);
                     app.cuser.save(res, {forceRefresh:true});
 
                     window.localStorage.setItem("justLoggedIn", 1);
-                    console.log(localStorage);
-                    // app.router.navigate('/dashboard');app.router.dashboard();
+                    app.router.navigate('/dashboard');app.router.dashboard();
 
 
                 } else {
