@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-    <widget id="com.RCTC.IE511" version="1.4.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap = "http://phonegap.com/ns/1.0">
+    <widget id="com.mediabeef.carpoolnow" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap = "http://phonegap.com/ns/1.0">
     <!-- versionCode is optional and Android only -->
-    <name>IE511</name>
+    <name>Carpool Now</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Carpool Now - Real Time Ridematching 
     </description>
-    <author email="ceo@superbappsolutions.com" href="http://formularymedical.com">
-        Superbappsolutions.com
+    <author email="hello@mediabeef.com" href="http://mediabeef.com">
+        Media Beef, Inc.
     </author>
     <content src="index.html" />
     <access origin="*" />
