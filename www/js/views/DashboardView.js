@@ -1,11 +1,10 @@
 app.views.DashboardView = Backbone.View.extend({
-
     initialize: function () {
-        this.$el.html(this.template());
+        this.render();
     },
 
     render: function () {
-        this.$el.html(this.template());
+        this.$el.html(this.template($.extend({}, app.cuser.attributes, {commuter_data: app.cuser.commuter_data})));
        return this;
     },
 
@@ -16,6 +15,5 @@ app.views.DashboardView = Backbone.View.extend({
     back: function(event) {
         window.history.back();
         return false;
-    },
-
+    }
 });

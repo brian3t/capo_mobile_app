@@ -51,17 +51,39 @@ app.views.HomeView = Backbone.View.extend({
                     // }
 
                     res.statusCode = null;
-                    window.localStorage.setItem('cuser', JSON.stringify(res));
 
+                    res.username = s.capitalize(res.commuterData.userName.toLowerCase());
+                    res.firstName = s.capitalize(res.firstName.toLowerCase());
+                    res.email = res.commuterData.email.toLowerCase();
+
+                    window.localStorage.setItem("cuser", JSON.stringify(res));
+                    if (res.hasOwnProperty('commuterData')) {
+                        for (var key in res.commuterData) {
+                            if (['supFName', 'commuterName', 'empName', 'empState', 'supLName', 'lastName',
+                                    'commuterName', 'supFName', 'comModeDesc',
+                                    'firstName', 'empCity'].indexOf(key) !== -1) {
+                                res.commuterData[key] = s.capitalize(res.commuterData[key].toLowerCase());
+                            }
+                            if (['email', 'supEmail'].indexOf(key) !== -1){
+                                res.commuterData[key] = res.commuterData[key].toLowerCase();
+                            }
+                            if (['empStreet1',  'addrStreet1', 'addrCity'].indexOf(key) !== -1){
+                                res.commuterData[key] = s.titleize(res.commuterData[key].toLowerCase());
+                            }
+                        }
+
+                        app.cuser.commuter_data = res.commuterData;
+                    }
                     //only pass a portion of it to Backbone
-                    res = _.pick(res, 'commuter');
-                    // res = _.pick(res, 'statusCode', 'statusDesciption', 'enrolled', 'commuter', 'firstName', 'hashedPassword');
-                    // res['enrolled'] = (res['enrolled'] == true?1:0);
-                    app.cuser.save(res, {forceRefresh:true});
+                    res = _.pick(res, 'statusCode', 'statusDescription', 'enrolled', 'commuter', 'firstName', 'hashedPassword', 'username', 'email');
+
+                    array_keys_to_underscore(res);
+                    app.cuser.save(res, {forceRefresh: true});
 
                     window.localStorage.setItem("justLoggedIn", 1);
                     console.log(localStorage);
-                    // app.router.navigate('/dashboard');app.router.dashboard();
+                    app.router.navigate('/dashboard');
+                    app.router.dashboard();
 
 
                 } else {
@@ -105,13 +127,16 @@ app.views.HomeView = Backbone.View.extend({
 });
 
 app.cuser = new app.models.Cuser;
+app.local_store_cuser = {};
+
+//testing backbone localstorage
 var Model = Backbone.Model.extend({
     urlRoot: '/tpl/fixtures.json',
     localStorage: true
 });
 var model = new Model({});
 model.fetch({
-    success: function(model, response, options){
+    success: function (model, response, options) {
         console.log(Backbone.LocalStorage._getData('/tpl/fixtures.json'));
     }
 });

@@ -6,7 +6,7 @@ var config = {
 };
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
-    app.utils.templates.load(["HomeView", "DashboardView", "DrugListItemView", "DrugListGoToFormularyItemView", "PlanListItemView", "FormularyView"], function () {
+    app.utils.templates.load(["HomeView", "DashboardView", "DrugListItemView", "DrugListGoToFormularyItemView", "PlanListItemView", "FormularyView", "ForgotView"], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.start();
     });
@@ -72,3 +72,14 @@ else {
 }
 
 Backbone.LocalStorage.setPrefix('capo');
+
+app_alert = function (message, alertCallback, title, buttonName) {
+    if (buttonName === null) {
+        buttonName = "OK"
+    }
+    if (isInWeb) {
+        alert(message);
+    } else {
+        navigator.notification.alert(message, alertCallback, title, buttonName);
+    }
+};

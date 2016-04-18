@@ -144,3 +144,15 @@ app.utils.misc = (function () {
     };
 
 }());
+
+function array_keys_to_underscore(arr) {
+    for (var key in arr) {
+        var keyLower = s.underscored(key);
+        // if key is not already lower case
+        if (keyLower !== key) {
+            var temp = arr[key];
+            delete arr[key];
+            arr[keyLower] = temp;
+        }
+    }
+}
