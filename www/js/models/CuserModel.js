@@ -3,7 +3,8 @@ app.models.Cuser = Backbone.Model.extend({
     initialize:function () {
     },
     urlRoot: config.baseUrl + 'cuser',
-    localStorage: true
+    localStorage: true,
+    commuter_data: {}
 }
     // ,
 //     {

@@ -69,10 +69,18 @@ app.routers.AppRouter = Backbone.Router.extend({
                 app.slider.slidePage(new app.views.FormularyView({model: returnedData}).render().$el);
             }
         });
+    },
+
+    forgot: function () {
+        if (!app.forgotView) {
+            app.forgotView = new app.views.ForgotView();
+            app.forgotView.render();
+        } else {
+            console.log('reusing forgot view');
+            app.forgotView.delegateEvents(); // delegate events when the view is recycled
+        }
+        app.slider.slidePage(app.forgotView.$el);
     }
 
-    //map: function (id) {
-    //    app.slider.slidePage(new app.views.MapView().render().$el);
-    //}
 
 });

@@ -142,28 +142,23 @@ app.utils.misc = (function () {
     };
 
 }());
-String.prototype.toUnderscore = function () {
-    return this.replace(/([A-Z])/g, function ($1) {
-        return "_" + $1.toLowerCase();
-    });
-};
-function array_keys_to_underscore(array_input) {
-    var tmp = [];
-    var keys = Object.keys(array_input);
-    for (var j = 0; j < keys.length; j++) {
-        var key = keys[j].toUnderscore();
-        tmp[key] = array_input[keys[j]];
+
+function array_keys_to_underscore(arr) {
+    for (var key in arr) {
+        var keyLower = s.underscored(key);
+        // if key is not already lower case
+        if (keyLower !== key) {
+            var temp = arr[key];
+            delete arr[key];
+            arr[keyLower] = temp;
+        }
     }
-    return tmp;
 }
-function ucfirst(str) {
-    // split string
-    var firstChar = str.substring(0,1);
-    var remainChar = str.substring(1);
 
-    // convert case
-    firstChar = firstChar.toUpperCase();
-    remainChar = remainChar.toLowerCase();
-
-    return firstChar + remainChar;
+function ratchet_popover_dismiss() {
+    var popovers = $('.popover');
+    $(popovers).removeClass('visible');
+    $(popovers).removeClass('active');
+    $(popovers).hide();
+    $("div.backdrop").remove();
 }
