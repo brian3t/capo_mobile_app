@@ -67,7 +67,7 @@ ul {
 
 /* line 42, ../sass/styles.scss */
 #loading {
-  background: url("/img/spinner-blue.gif") no-repeat 50%;
+  background: url("../../../img/spinner-blue.gif") no-repeat 50%;
   width: 100%;
   min-height: 50px;
   position: relative;
@@ -333,12 +333,12 @@ div.page {
 
 /* line 182, ../sass/styles.scss */
 div.page[current_view=home] {
-  background-image: url("/img/bk1.png");
+  background-image: url("../../../img/bk1.png");
 }
 
 /* line 186, ../sass/styles.scss */
 div.page[current_view=dashboard] {
-  background-image: url("/img/bk2.png");
+  background-image: url("../../../img/bk2.png");
 }
 
 /* line 189, ../sass/styles.scss */
@@ -406,24 +406,30 @@ input[placeholder], [placeholder], *[placeholder] {
 
 /* line 224, ../sass/styles.scss */
 #app_logo {
-  background-image: url("/img/app_logo.png");
-  width: 48%;
+  background-image: url("../../../img/app_logo.png");
+  width: 120px;
   background-size: 63%;
   position: relative;
-  height: 0;
+  height: auto;
   padding-bottom: 42%;
   background-repeat: no-repeat;
   background-origin: content-box;
-  margin: 4% 25% 0;
+  float: none;
+  margin: 0 auto;
   background-position: center -13%;
 }
 
-/* line 236, ../sass/styles.scss */
+/* line 237, ../sass/styles.scss */
+body.landscape #app_logo {
+  padding-bottom: 15%;
+}
+
+/* line 240, ../sass/styles.scss */
 .fa {
   font-size: initial;
 }
 
-/* line 239, ../sass/styles.scss */
+/* line 243, ../sass/styles.scss */
 .btn-big-square {
   width: 48%;
   background-size: 63%;
@@ -435,12 +441,12 @@ input[placeholder], [placeholder], *[placeholder] {
   background-position: center -13%;
 }
 
-/* line 249, ../sass/styles.scss */
+/* line 253, ../sass/styles.scss */
 .btn-big-square:first-child {
   margin-right: 2%;
 }
 
-/* line 252, ../sass/styles.scss */
+/* line 256, ../sass/styles.scss */
 .btn-big-square > span {
   position: absolute;
   bottom: 15%;
@@ -450,28 +456,28 @@ input[placeholder], [placeholder], *[placeholder] {
   font-size: smaller;
 }
 
-/* line 261, ../sass/styles.scss */
-button.request {
-  background-image: url("/img/rider.png");
-}
-
 /* line 265, ../sass/styles.scss */
-button.offer {
-  background-image: url("/img/driver.png");
+button.request {
+  background-image: url("../../../img/rider.png");
 }
 
 /* line 269, ../sass/styles.scss */
+button.offer {
+  background-image: url("../../../img/driver.png");
+}
+
+/* line 273, ../sass/styles.scss */
 #dashboard_info {
   min-height: 220px;
 }
 
-/* line 273, ../sass/styles.scss */
+/* line 277, ../sass/styles.scss */
 .footer {
   position: fixed;
   bottom: 12px;
 }
 
-/* line 277, ../sass/styles.scss */
+/* line 281, ../sass/styles.scss */
 .blank_line {
   width: 100%;
   height: 18px;

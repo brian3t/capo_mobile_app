@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.usvsolutions.formularylookup"
+        id        = "com.mediabeef.carpoolnow"
         version   = "0.0.0"
         >
 
-    <name>formulary_html</name>
-    <description>The best formulary lookup app</description>
-    <author href="" email="tri@usvsolutions.com"></author>
+    <name>Carpoolnow</name>
+    <description>Carpooling app</description>
+    <author href="" email="hello@mediabeef.com"></author>
 
     <preference name="phonegap-version" value="3.3.0" />
     <preference name="orientation"      value="portrait" />

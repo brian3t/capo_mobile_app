@@ -130,13 +130,13 @@ app.cuser = new app.models.Cuser;
 app.local_store_cuser = {};
 
 //testing backbone localstorage
-var Model = Backbone.Model.extend({
-    urlRoot: '/tpl/fixtures.json',
-    localStorage: true
-});
-var model = new Model({});
-model.fetch({
-    success: function (model, response, options) {
-        console.log(Backbone.LocalStorage._getData('/tpl/fixtures.json'));
-    }
-});
+// var Model = Backbone.Model.extend({
+//     urlRoot: '/tpl/fixtures.json',
+//     localStorage: true
+// });
+// var model = new Model({});
+// model.fetch({
+//     success: function (model, response, options) {
+//         console.log(Backbone.LocalStorage._getData('/tpl/fixtures.json'));
+//     }
+// });

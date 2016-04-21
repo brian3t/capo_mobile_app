@@ -40,7 +40,7 @@ ul {
   background-color: #ddd;
 }
 #loading{
-  background: url("/img/spinner-blue.gif") no-repeat 50%;
+  background: url("../../../img/spinner-blue.gif") no-repeat 50%;
   width: 100%;
   min-height: 50px;
   position: relative;
@@ -180,11 +180,11 @@ div.page{
   background-size: cover;
 }
 div.page[current_view=home] {
-  background-image: url("/img/bk1.png");
+  background-image: url("../../../img/bk1.png");
 }
 
 div.page[current_view=dashboard] {
-  background-image: url("/img/bk2.png");
+  background-image: url("../../../img/bk2.png");
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color:    white;
@@ -222,16 +222,20 @@ input[placeholder], [placeholder], *[placeholder] {
   color: white !important;
 }
 #app_logo{
-  background-image: url("/img/app_logo.png");
-  width: 48%;
+  background-image: url("../../../img/app_logo.png");
+  width: 120px;
   background-size: 63%;
   position: relative;
-  height: 0;
+  height: auto;
   padding-bottom: 42%;
   background-repeat: no-repeat;
   background-origin: content-box;
-  margin: 4% 25% 0;
+  float: none;
+  margin: 0 auto;
   background-position: center -13%;
+}
+body.landscape #app_logo{
+padding-bottom: 15%
 }
 .fa{
   font-size: initial;
@@ -259,11 +263,11 @@ input[placeholder], [placeholder], *[placeholder] {
 }
 
 button.request {
-  background-image: url("/img/rider.png");
+  background-image: url("../../../img/rider.png");
 }
 
 button.offer {
-  background-image: url("/img/driver.png");
+  background-image: url("../../../img/driver.png");
 }
 
 #dashboard_info {

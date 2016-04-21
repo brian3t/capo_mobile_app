@@ -27,6 +27,10 @@ var capp = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function () {
+        window.addEventListener('orientationchange', doOnOrientationChange);
+        // Initial execution if needed
+        doOnOrientationChange();
+
         capp.receivedEvent('deviceready');
     },
     position: {stateCode: ""},
@@ -83,3 +87,18 @@ app_alert = function (message, alertCallback, title, buttonName) {
         navigator.notification.alert(message, alertCallback, title, buttonName);
     }
 };
+
+function doOnOrientationChange() {
+    switch (window.orientation) {
+        case -90:
+        case 90:
+            console.log('landscape');
+            $('body').addClass('landscape');
+            break;
+        default:
+            console.log(window.orientation);
+            console.log('portrait');
+            $('body').removeClass('landscape');
+            break;
+    }
+}
