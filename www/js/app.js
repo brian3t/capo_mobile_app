@@ -6,7 +6,7 @@ var config = {
 };
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
-    app.utils.templates.load(["HomeView", "DashboardView", "DrugListItemView", "DrugListGoToFormularyItemView", "PlanListItemView", "FormularyView", "ForgotView"], function () {
+    app.utils.templates.load(["HomeView", "DashboardView", "ForgotView"], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.start();
     });
