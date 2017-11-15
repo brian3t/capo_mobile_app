@@ -30,8 +30,6 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.2.0" />
     <gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.0" />
     <gap:plugin name="cordova-plugin-x-toast" source="npm" />
-    <feature name="http://api.phonegap.com/1.0/notification" />
-    <feature name="http://api.phonegap.com/1.0/file" />
     <platform name="blackberry10">
         <icon src="res/icon/blackberry/icon-150.png" />
         <icon src="res/icon/blackberry/icon-144.png" />
@@ -91,14 +89,7 @@
         <splash height="2208" src="res/screen/ios/Default-736h.png" width="1242" />
         <splash height="1242" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
     </platform>
-    <feature name="StatusBar">
-        <param name="ios-package" onload="true" value="CDVStatusBar" />
-        <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/acianti/cordova-plugin-local-notifications" />
-    </feature>
     <preference name="android-build-tool" value="gradle" />
-    <feature id="blackberry.app">
-        <param name="websecurity" value="disable" />
-    </feature>
     <preference gap:platform="blackberry10" name="websecurity" value="disable" />
     <engine name="android" spec="^6.4.0" />
     <engine name="blackberry10" spec="^3.8.0" />
