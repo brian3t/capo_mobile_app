@@ -27,7 +27,6 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="StatusBarBackgroundColor" value="#58567f" />
     <preference name="DisallowOverscroll" value="true" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.2.0" />
     <gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.0" />
     <gap:plugin name="cordova-plugin-x-toast" source="npm" />
     <platform name="blackberry10">
@@ -100,4 +99,6 @@
         <variable name="SENDER_ID" value="wide-ceiling-143919" />
     </plugin>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" />
+
+    <allow-intent href="geo:*" />
 </widget>
