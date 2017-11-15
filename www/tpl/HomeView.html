@@ -3,30 +3,33 @@
 <!--<div class="bar bar-standard bar-header-secondary">-->
 <!--</div>-->
 <div class="content-background"></div>
-<div class="content home">
+<div class="content white home">
     <div id="app_logo"></div>
-    <form id="loginForm" class="input-group col9 center">
+    <!--<button class="btn btn-primary btn-block" type="button" onclick="testlocal()">Test local note</button>-->
+    <form id="loginForm" class="input-group col9 center" style="display:block;">
         <div class="input-row">
             <label><i class="fa fa-user"></i></label>
-            <input id="username" type="text" placeholder="Username">
+            <b><input id="username" type="text" placeholder="Username" autocapitalize="off" class="whiteTextInput"></b>
         </div>
         <div class="input-row">
             <label><i class="fa fa-lock"></i>
             </label>
-            <input id="password" type="password" placeholder="Password">
+            <b><input id="password" type="password" placeholder="Password" class="whiteTextInput"></b>
         </div>
+        <div class="input-row checkbox"><label>Remember Password</label><div  id="remember" class="toggle <%= (localStorage.getItem('remember')=='true'?'active':'') %>">
+            <div class="toggle-handle"></div>
+        </div></div>
         <a> <button id="submitButton" class="btn btn-primary btn-block" type="submit">Log In</button></a>
     </form>
     <br>
     <a onclick="app.router.navigate('/forgot');app.router.forgot();">Forgot Username/Password</a>
     <br/>
-    <a href="#">Create Account</a>&nbsp;&nbsp;|&nbsp;
-    <a href="#">Learn More</a>
+    <a onclick="app.router.navigate('/signup');app.router.signup();">Create Account</a>&nbsp;&nbsp;|&nbsp;
+    <a href="https://tdm.commuterconnections.org/mwcog" target="_blank">Learn More</a>
 
     <div class="bar-standard">
         Brought to you by Metropolitan Washington
         Council of Governments.
-        <a href="#"><b>Learn More ></b></a>
     </div>
 </div>
 <script>

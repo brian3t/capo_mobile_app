@@ -5,18 +5,18 @@
  * Based on : https://github.com/ccoenraets/directory-backbone-topcoat-require
  *
  */
- (function (root, factory) {
-     if (typeof define === 'function' && define.amd) {
-         // AMD. Register as an anonymous module.
-         define(['jquery'], factory);
-     } else if (typeof exports === 'object') {
-         // Node.
-         module.exports = factory(require('jquery'));
-     } else {
-         // Browser globals (root is window)
-         root.PageSlider = factory(root.jQuery);
-     }
- }(this, function ($) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object' && typeof require === 'function') {
+        // Node.
+        module.exports = factory(require('jquery'));
+    } else {
+        // Browser globals (root is window)
+        root.PageSlider = factory(root.jQuery);
+    }
+}(this, function ($) {
     'use strict';
 
     var PageSlider = function ($container) {

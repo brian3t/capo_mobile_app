@@ -5,7 +5,9 @@ app.views.ForgotView = Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template());
-       return this;
+        var self = this;
+        self.resetFields();
+        return this;
     },
 
     events: {
@@ -15,5 +17,12 @@ app.views.ForgotView = Backbone.View.extend({
     back: function(event) {
         window.history.back();
         return false;
+    },
+
+    resetFields: function() {
+        $("#forgotForm #answer").val('');
+        $("#forgotForm #username").val('');
+        $("#forgotForm #question").text('');
+        $("#forgotForm #new_password").val('');
     }
 });

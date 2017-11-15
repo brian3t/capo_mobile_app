@@ -1,0 +1,94 @@
+<header class="bar bar-nav">
+    <i class="button fa fa-chevron-left back_btn" aria-hidden="true"></i>
+    <span class="title">Offer to Drive</span>
+    <div class="pull-right popup_btn"><a href="#popover"><img class="pull-right" src="img/popup_menu.png"></a></div>
+</header>
+<div id="fade" class="black_overlay"></div>
+<div class='content view_riders'>
+    <div id="view_switcher" class="segmented-control">
+        <a class="control-item active" data-view="map">Map View</a>
+        <a class="control-item" data-view="listview">List View</a>
+    </div>
+    <div id="map" class="view_to_switch">
+
+    </div>
+
+    <div id="listview" class="view_to_switch greybox" style="display: none;">
+        <p class="no_request" style="padding: 10px;">
+            Sorry there are currently no nearby riders, you can use your CarpoolNow account to also login to Commuter Connections to find possible carpool
+            matches. <br/><br/>
+            <button onclick="window.open('https://tdm.commuterconnections.org/mwcog', '_system')" style="color: #000;">Visit Commuter Connections</button>
+        </p>
+        <p class="has_request" style="display: none">Click on a rider to view route details</p>
+        <div id="list"></div>
+    </div>
+
+    <div id="offer_ride" class="box float_bottom text-center" style="display: none;">
+        <span class="icon icon-close corner_button"></span>
+        <div id="rider">
+        </div>
+        <div class="content-padded">
+            <button id="offer_ride_btn" class="btn btn-primary btn-block">OFFER RIDE</button>
+        </div>
+    </div>
+    <div id="current_pos_wrapper">
+        <div class="gmnoprint" draggable="false" controlwidth="28" controlheight="55"
+             style="margin: 10px;-webkit-user-select: none;position: absolute;bottom: 333px;right: 28px;">
+            <div id="get_curr_pos" class="gmnoprint" controlwidth="28" controlheight="55"
+                 style="position: absolute; left: 0; top: 0;">
+                <div draggable="false"
+                     style="-webkit-user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px; border-radius: 2px; cursor: pointer; width: 28px; height: 28px; background-color: rgb(255, 255, 255);">
+                    <div title="Zoom in"
+                         style="position: relative;width: 18px;height: 18px;left: 5px;top: 5px;background-image: url('img/mylocation.png');background-size: 180px 18px;background-position: -162px 0;">
+                        <div jstcache="530"
+                             class="widget-mylocation-button-icon-common widget-mylocation-cookieless widget-mylocation-button-blue"
+                             jsan="7.widget-mylocation-button-icon-common,7.widget-mylocation-button-blue,7.widget-mylocation-cookieless"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="waiting" class="overlay full-width top overlay full-height content" style="display: none">
+    <div class="content-padded">
+        <h3>RIDEMATCH OFFERED</h3>
+        <div id="rider_info">
+
+        </div>
+        <br><br>
+        <h3>
+            WAITING FOR ACCEPTANCE
+        </h3>
+    </div>
+</div>
+
+<div id="offer_accepted" class="overlay full-width top content" style="display: none">
+    <div class="content-padded">
+        <h3>RIDEMATCH ACCEPTED</h3>
+        <div id="rider_info_with_eta">
+
+        </div>
+        <button class="launch_map_app btn btn-block">Launch map app</button>
+        <button id="confirm_pickup" class="btn btn-primary btn-block">Rider picked up</button>
+    </div>
+</div>
+
+<div id="onride" class="overlay full-width top content" style="display: none">
+    <div class="content-padded">
+        <h3><span class="rider_name"></span> ONBOARD</h3>
+        <div>Estimated Time to Rider's Destination: <span class="eta"></span>
+        </div>
+        <button class="launch_map_app btn btn-block">Launch map app</button>
+        <button id="confirm_dropoff" class="btn btn-primary btn-block">Rider dropped off</button>
+    </div>
+</div>
+
+<div class="box box-center" id="ridematch_success" style="display: none">
+    <br>
+    <h4>RIDEMATCH SUCCESS</h4><br>
+    <button class="logout btn btn-primary btn-block">LOG OUT</button>
+</div>
+
+<div id="cancel-wrapper" class="full-width bottom" style="display: none">
+    <button id="cancel_btn" class="btn btn-negative btn-block btn-outlined percent-padded w95">Cancel Offer</button>
+</div>

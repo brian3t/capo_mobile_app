@@ -1,0 +1,4 @@
+<p>Your driver, <%= name %> <%= phone %> is coming to pick you up</p>
+<%= _.isNull(miles_away)?'':(numeral(miles_away).format('0.0') + 'miles away') %>
+<button class="btn ratchet btn-positive btn-outlined confirm" type="button">Confirm Pickup</button>
+<button class="btn ratchet btn-negative btn-outlined cancel" type="button">Cancel Pickup</button>

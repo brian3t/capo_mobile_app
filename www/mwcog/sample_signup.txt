@@ -1,0 +1,36 @@
+ action:registerNewCommuter
+     
+firstName:JIANTEST
+lastName:JIANTEST
+userName:jiantest115
+password1:changeme4
+pwdQuestion:What is your mothers maiden name?
+     
+pwdAnswer:123
+emailType:null
+email1:JIANTEST115@GMAIL.COM
+marketingemailsflag:N
+phoneType:HOME
+phone1:512
+phone2:115
+     
+phone3:1119
+addrType:HOME
+addrStreet1:1015 CARSON ST
+addrCity:SILVER SPRING
+addrState:MD
+addrZip:20901
+commuteMode:22
+     
+hearAboutUs:R1_7
+siteId:10001
+empIndex:0
+employerId0:540455
+empAddrId0:6440047
+
+
+http://mwcog3.mediabeef.com/mwcog/mobileapicontroller?action=employerSearch&employerStNo=777&employerStreet=NORTH%20CAPITOL%20ST%20NE%20STE%20300
+
+sample response:
+
+{"employer0: ":"MWCOG","employer0employerId":"540455","employer0address0: ":"777 NORTH CAPITOL ST NE STE 300  WASHINGTON DC 20002","employer0employerAddrId":"6440047"}

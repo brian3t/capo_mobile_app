@@ -1,0 +1,1070 @@
+<!--FOR DEBUG-->
+<!--<script src="../lib/jquery.js"></script>-->
+<!--<script src="../lib/underscore.js"></script>-->
+
+<div class="content-background"></div>
+<div class="content home">
+    <div id="app_logo"></div>
+    <!--<form name="newregistration" method="post" action="ccregister.profile">-->
+    <form id="newregistration" name="newregistration" class="input-group col98 center">
+        <input type="hidden" id="is_email_required" value="false">
+        <input type="hidden" name="marketingemailsflag" id="marketingemailsflag" value="N">
+        <h3 class="header">Sign Up with Commuter Connections</h3>
+        <br/>
+        <div class="info">
+            If you have had a Commuter Connections account in the past, DO NOT CREATE a new account. Contact Commuter
+            Connections to reactivate your account at 800-745-7433.
+            Fields with * are required.
+        </div>
+        <br/>
+        <h4>Member Information</h4>
+        <div class="blank_line"></div>
+        <label for="firstName">First Name *</label>
+        <input name="firstName" id="firstName" type="text" autocapitalize="on" placeholder="">
+        <label for="middleName">Middle Initial</label>
+        <input name="middleName" id="middleName" type="text" autocapitalize="on" placeholder="" maxlength="1" size="1">
+        <label>Last Name *</label>
+        <input name="lastName" type="text" autocapitalize="on" placeholder="">
+
+        <label for="userName">Username *</label>
+        <p>
+            Must be 8 to 12 alphanumeric characters, such as johnDoe1
+        </p>
+        <input type="text" id="userName" name="userName" size="12" value="" placeholder="">
+
+        <label>Password *</label>
+        <p>
+            Must be 8 to 12 alphanumeric characters, such as doe4john2
+        </p>
+        <input type="password" name="password1" size="12" value="" placeholder="">
+
+        <label>Confirm Password *</label>
+        <p>
+            Must be same as password
+        </p>
+        <input type="password" name="password2" size="12" value="" placeholder="">
+
+        <label for="pwdQuestion">Password Recovery Question *</label>
+        <select id="pwdQuestion" name="pwdQuestion" style="visibility: visible;">
+            <option value="">Please Select One</option>
+            <option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+            <option value="What is your favorite color?">What is your favorite color?</option>
+            <option value="What is your pets name?">What is your pets name?</option>
+            <option value="What is your school name?">What is your school name?</option>
+        </select>
+        <label>Password Recovery Answer *</label>
+        <input type="text" name="pwdAnswer" size="37" value="" placeholder="">
+
+        <br>
+        <h4>Contact Information</h4>
+        <label for="title1">I prefer to be addressed as</label>
+        <span>
+        <input type="radio" name="title" value="" checked="">None&nbsp;&nbsp;
+        <input type="radio" name="title" value="Mr">Mr&nbsp;&nbsp;
+        <input type="radio" name="title" value="Miss">Miss&nbsp;&nbsp;
+        <input type="radio" name="title" value="Ms">Ms&nbsp;&nbsp;
+        <input type="radio" name="title" value="Mrs">Mrs&nbsp;&nbsp;
+        <input type="radio" name="title" value="Dr">Dr&nbsp;&nbsp;
+        <input type="radio" name="title" value="Oth" onclick="javascript:alert('Please enter in the text box next to the option. \nFor Ex: Capt., Col., Lt.');
+        document.getElementById('title1').style.visibility = 'visible';document.getElementById('title1').focus();">Other&nbsp;&nbsp;
+        <input type="text" name="title1" value="" id="title1" size="10" maxlength="15" style="visibility: hidden;"><br>
+        </span>
+        <label for="email1">E-mail Address</label>
+        <p>Email addresses will only be shared with commuters permission.</p>
+        <input type="text" id="email1" name="email1" size="35" value="">
+        <label for="email2">Confirm E-mail Address</label>
+        <p>Email addresses will only be shared with commuters permission.</p>
+        <input id="email2" type="text" name="email2" size="35" value="">
+        <p>At least one contact telephone number is required</p>
+        <label for="phone1">Home Phone Number</label>
+        <br>
+        <input type="hidden" name="phoneType" value="HOME">
+        <input class="normal_size" type="number" id="phone1" name="phone1" size="3" maxlength="3" min="0" max="999"
+               value=""
+               onkeydown="TabNext(this, 'down', 3)" onkeyup="TabNext(this, 'up', 3, this.form.phone2)">
+        - <input class="normal_size" type="number" name="phone2" size="3" maxlength="3" min="0" max="999" value=""
+                 onkeydown="TabNext(this, 'down', 3)" onkeyup="TabNext(this, 'up', 3, this.form.phone3)">
+        - <input class="normal_size" type="number" name="phone3" size="4" maxlength="4" min="0" max="9999" value="">
+        <br><label for="cphone1">Cell Phone Number</label>
+        <br>
+        <input type="hidden" name="phoneType" value="CELL">
+        <input type="number" id="cphone1" name="cphone1" class="normal_size" size="3" maxlength="3" min="0" max="999"
+               value=""
+               onkeydown="TabNext(this, 'down', 3)" onkeyup="TabNext(this, 'up', 3, this.form.cphone2)">
+        - <input type="number" name="cphone2" class="normal_size" size="3" maxlength="3" min="0" max="999" value=""
+                 onkeydown="TabNext(this, 'down', 3)" onkeyup="TabNext(this, 'up', 3, this.form.cphone3)">
+        - <input type="number" name="cphone3" class="normal_size" size="4" maxlength="4" min="0" max="9999" value="">
+        <br>
+        <label for="wphone1">Work Phone Number</label>
+        <br>
+        <input type="number" id="wphone1" name="wphone1" class="normal_size" size="3" min="0" max="999" maxlength="3"
+               value=""
+               onkeydown="TabNext(this, 'down', 3)" onkeyup="TabNext(this, 'up', 3, this.form.wphone2)">
+        - <input type="number" name="wphone2" class="normal_size" size="3" maxlength="3" min="0" max="999" value=""
+                 onkeydown="TabNext(this, 'down', 3)" onkeyup="TabNext(this, 'up', 3, this.form.wphone3)">
+        - <input type="number" name="wphone3" class="normal_size" size="4" maxlength="4" min="0" max="9999" value="">
+        <br>
+        Workphone Extension: <input type="text" name="wphone4" class="normal_size" size="5" maxlength="5" value="">
+        <br><br>
+        <h4>Home Address</h4>
+        <p>All commuters must have a home address, for Rideshare and GRH. DO NOT use a PO Box as your home
+            address. Commuters can add a separate mailing or PO Box address by editing their profile later.</p>
+        <label for="addrType">Address Type</label>
+        <select id="addrType" name="addrType">
+            <option value="HOME">Home Address</option>
+            <option value="MAIL">Mailing Address</option>
+        </select>
+        <label for="addrStreet1">Street Address *</label><input id="addrStreet1" type="text" name="addrStreet1"
+                                                                size="35"
+                                                                value="">
+        <label>Apt # <input type="text" name="aptNo" id="aptNo" size="6" maxlength="6" value=""></label>
+        <input type="hidden" name="addrStreet2" id="addrStreet2" size="35" value="">
+        <label>City *<input type="text" name="addrCity" id="addrCity" size="35" value=""></label>
+        <label for="addrState">State *</label>
+        <select name="addrState" id="addrState">
+            <option value=""></option>
+            <option value="DE">DELAWARE</option>
+            <option value="DC">DISTRICT OF COLUMBIA</option>
+            <option value="MD">MARYLAND</option>
+            <option value="NJ">NEW JERSEY</option>
+            <option value="NY">NEW YORK</option>
+            <option value="NC">NORTH CAROLINA</option>
+            <option value="PA">PENNSYLVANIA</option>
+            <option value="TN">TENNESSEE</option>
+            <option value="VA">VIRGINIA</option>
+            <option value="WV">WEST VIRGINIA</option>
+        </select>
+        <p>Please make sure to use your HOME zip code and not your WORK zip code.</p>
+        <label>Zip Code *
+            <input type="number" name="addrZip" id="addrZip" size="10" maxlength="10" value=""
+                   onblur="checkAddressBoundary('https://tdm.commuterconnections.org/mwcog/AjaxController?addrStreet1=')"></label>
+        <br>
+        <div id="addressBoundary"></div>
+        <br>
+        <h4>Commute Information</h4>
+        <label for="commuteMode">Current Commute Mode *</label>
+        <select id="commuteMode" name="commuteMode">
+            <option value="">Please select one</option>
+            <option value="7">Bicycle</option>
+            <option value="21">Bicycle/Local Transit</option>
+            <option value="23">Bicycle/Marc</option>
+            <option value="25">Bicycle/Metrorail</option>
+            <option value="22">Bicycle/VRE</option>
+            <option value="1">CARPOOL</option>
+            <option value="16">Carpool/Local Transit</option>
+            <option value="19">Carpool/Metrobus</option>
+            <option value="15">Carpool/Metrorail</option>
+            <option value="17">Carpool/VRE</option>
+            <option value="32">Combination</option>
+            <option value="2">Company Vanpool</option>
+            <option value="9">Drive Alone</option>
+            <option value="75">Holiday</option>
+            <option value="12">Local Transit</option>
+            <option value="6">MARC</option>
+            <option value="24">Marc/Local Transit</option>
+            <option value="13">Marc/Metrorail</option>
+            <option value="20">MetroAccess</option>
+            <option value="4">Metrobus</option>
+            <option value="3">Metrorail</option>
+            <option value="28">Metrorail/Local Transit</option>
+            <option value="11">Metrorail/Metrobus</option>
+            <option value="29">OTHER</option>
+            <option value="31">Public Transit</option>
+            <option value="76">Sick Day</option>
+            <option value="5">VRE</option>
+            <option value="26">VRE/Local Transit</option>
+            <option value="18">VRE/Metrobus</option>
+            <option value="14">VRE/Metrorail</option>
+            <option value="77">Vacation</option>
+            <option value="10">Vanpool</option>
+            <option value="27">Vanpool/Metrorail</option>
+            <option value="8">Walk</option>
+
+        </select>
+        <label for="hearAboutUs">How did you learn about us? *</label>
+        <select id="hearAboutUs" name="hearAboutUs" style="visibility: visible;">
+            <option value="">Please select one</option>
+            <option value="R1_0">Brochure/Promo Materials</option>
+            <option value="R1_5">Bus/Train Schedule</option>
+            <option value="R1_10">Bus/Train sign</option>
+            <option value="R1_6">Direct Mail</option>
+            <option value="R1_7">Employer</option>
+            <option value="R1_8">Employer Survey</option>
+            <option value="R1_9">Fair/Onsite Event</option>
+            <option value="R1_11">Government Office</option>
+            <option value="R1_12">Highway Sign</option>
+            <option value="R1_13">Information (411)</option>
+            <option value="R1_1">Internet</option>
+            <option value="R1_15">Library</option>
+            <option value="R1_16">Mobile Billboard</option>
+            <option value="R1_17">Newsletter</option>
+            <option value="R1_18">Newspaper</option>
+            <option value="R1_19">Newspaper (Local)</option>
+            <option value="R1_4">Other</option>
+            <option value="R1_20">Other Ridesharing Org</option>
+            <option value="R1_21">Postcard (COG)</option>
+            <option value="R1_22">Presentation</option>
+            <option value="R1_2">Radio</option>
+            <option value="R1_23">Real Estate/Welcome wagon</option>
+            <option value="R1_24">Referral from Transit.Org</option>
+            <option value="R1_26">TV</option>
+            <option value="R1_3">Television</option>
+            <option value="R1_25">Theater Slide</option>
+            <option value="R1_27">Van Sign</option>
+            <option value="R1_34">Voice Mail Messages</option>
+            <option value="R1_28">Was/Is Applicant</option>
+            <option value="R1_29">White Pages</option>
+            <option value="R1_30">Word of Mouth</option>
+            <option value="R1_33">Yellow Pages - Local</option>
+            <option value="R1_31">Yellow Pages - Verizon</option>
+            <option value="R1_32">Yellow Pages - Yellow Book</option>
+        </select>
+
+        <br>
+        <h4>Employer Search</h4>
+        <p>Please be as general as possible when searching for employers.  Start by searching on your EMPLOYER STREET address only.  You can narrow the search later if need be.</p>
+        <br>
+        <label>Employer Street Number *<input type="number" name="employerStNo" id="employerStNo" size="35"
+                                              maxlength="35" min="0" max="99999999999999999999999999999999999"
+                                              value=""></label>
+        <label>Employer Street Name *<input type="text" name="employerStreet" id="employerStreet" size="35"
+                                            value=""></label>
+        <button class="btn" type="button" name="searchEmp" id="searchEmp" value="Search"
+                onclick="searchEmployerDuringRegn(document.getElementById('employerStNo').value, document.getElementById('employerStreet').value)">
+            <span class="icon icon-search"></span>Search
+        </button>
+        <div id="loadingMessage"></div>
+        <div id="employerDetails">
+            <p>Please select an employer from the List</p>
+            <ul class="table-view sp small-font inline_block col10">
+                <li class="table-view-cell">
+                    <span>Employer Name</span>
+                    <span>Address</span>
+                    <span>Select</span>
+                </li>
+                <!--<input type="radio" name="empIndex" value="0" onclick="hideAddNewEmployer()"><input-->
+                <!--type="hidden" name="employerId0" value="521370"><input type="hidden" name="empAddrId0"-->
+                <!--value="6420962">-->
+            </ul>
+        </div>
+        <br>
+        <table>
+            <tbody id="addNewEmployer" style="display: none;">
+            <tr>
+                <td class="tdblue" colspan="2">ENTER EMPLOYER INFORMATION</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="share">
+                    <p>Employer not found for the search parameter(s). Please enter the employer information
+                        and then click the 'Save Employer Info' button to add employer information to the profile.</p>
+                </td>
+            </tr>
+            <tr class="left">
+                <td width="30%"><b>Employer Name:</b></td>
+                <td width="70%"><input type="text" name="empName" size="35" value=""> <font size="+2"
+                                                                                            color="red">*</font>
+                </td>
+            </tr>
+            <tr class="left">
+                <td>Building Name:</td>
+                <td><input type="text" name="empBuildg" size="35" value=""></td>
+            </tr>
+            <tr class="left">
+                <td><b>Street Address:</b></td>
+                <td>
+                    <input type="text" name="empStreet" size="35" value=""> <font size="+2" color="red">*</font>
+                    Suite:&nbsp;<input type="text" name="empSuite" size="10" maxlength="10" value="">
+                </td>
+            </tr>
+            <tr class="left">
+                <td>&nbsp;</td>
+                <td><input type="text" name="empStrExt" size="35" value=""></td>
+            </tr>
+            <tr class="left">
+                <td><b>City:</b></td>
+                <td><input type="text" name="empCity" size="35" value=""> <font size="+2" color="red">*</font></td>
+            </tr>
+            <tr class="left">
+                <td><b>State:</b></td>
+                <td>
+                    <select name="empState" value="">
+                        <option value=""></option>
+                        <option value="DE">DELAWARE</option>
+                        <option value="DC">DISTRICT OF COLUMBIA</option>
+                        <option value="MD">MARYLAND</option>
+                        <option value="NJ">NEW JERSEY</option>
+                        <option value="NY">NEW YORK</option>
+                        <option value="NC">NORTH CAROLINA</option>
+                        <option value="PA">PENNSYLVANIA</option>
+                        <option value="TN">TENNESSEE</option>
+                        <option value="VA">VIRGINIA</option>
+                        <option value="WV">WEST VIRGINIA</option>
+
+                    </select> <font size="+2" color="red">*</font>
+                    <b>Zip Code:</b>&nbsp;<input type="text" name="empZip" size="10" maxlength="10" value=""> <font
+                        size="+2" color="red">*</font>
+                </td>
+            </tr>
+
+            <tr class="left">
+                <td><b>Jurisdiction:</b></td>
+                <td>
+                    <select name="empJur">
+                        <option value=""></option>
+                        <option value="ACC">ACC - Accomack</option>
+                        <option value="ADM">ADM - Adams</option>
+                        <option value="ALB">ALB - Albemarle</option>
+                        <option value="ALX">ALX - Alexandria</option>
+                        <option value="ALG">ALG - Allegany Co. (MD)</option>
+                        <option value="AML">AML - Amelia</option>
+                        <option value="AMH">AMH - Amherst</option>
+                        <option value="AAC">AAC - Anne Arundel</option>
+                        <option value="APP">APP - Appomattox</option>
+                        <option value="ARL">ARL - Arlington</option>
+                        <option value="ATL">ATL - Atlantic</option>
+                        <option value="AUG">AUG - Augusta</option>
+                        <option value="BCY">BCY - Baltimore City</option>
+                        <option value="BCO">BCO - Baltimore County</option>
+                        <option value="BAT">BAT - Bath</option>
+                        <option value="BED">BED - Bedford</option>
+                        <option value="BGN">BGN - Bergen</option>
+                        <option value="BER">BER - Berkeley</option>
+                        <option value="BRK">BRK - Berks</option>
+                        <option value="BOT">BOT - Botetourt</option>
+                        <option value="BRU">BRU - Brunswick</option>
+                        <option value="BUC">BUC - Buckingham</option>
+                        <option value="BUK">BUK - Bucks</option>
+                        <option value="BVC">BVC - Buena Vista City</option>
+                        <option value="BUR">BUR - Burlington</option>
+                        <option value="CAV">CAV - Calvert County</option>
+                        <option value="CAM">CAM - Camden</option>
+                        <option value="CMD">CMD - Camden</option>
+                        <option value="CPB">CPB - Campbell</option>
+                        <option value="CMJ">CMJ - Cape May</option>
+                        <option value="CAR">CAR - Caroline Co. (MD)</option>
+                        <option value="CAL">CAL - Caroline Co. (VA)</option>
+                        <option value="CRL">CRL - Carroll</option>
+                        <option value="CEC">CEC - Cecil</option>
+                        <option value="CC">CC - Charles City County</option>
+                        <option value="CHA">CHA - Charles County</option>
+                        <option value="CHL">CHL - Charlotte</option>
+                        <option value="CSP">CSP - Charlottesville</option>
+                        <option value="TJP">TJP - Charlottesville</option>
+                        <option value="CHV">CHV - Charlottesville</option>
+                        <option value="CHP">CHP - Chesapeake</option>
+                        <option value="CP">CP - Chester</option>
+                        <option value="CHE">CHE - Chesterfield</option>
+                        <option value="CLA">CLA - Clarke</option>
+                        <option value="CH">CH - Colonial Heights</option>
+                        <option value="CUL">CUL - Culpeper</option>
+                        <option value="CBL">CBL - Cumberland (NJ)</option>
+                        <option value="CBR">CBR - Cumberland (PA)</option>
+                        <option value="CUM">CUM - Cumberland (VA)</option>
+                        <option value="CUR">CUR - Currituck</option>
+                        <option value="DAU">DAU - Dauphin</option>
+                        <option value="DEL">DEL - Delaware</option>
+                        <option value="DLW">DLW - Delaware</option>
+                        <option value="DIN">DIN - Dinwiddie</option>
+                        <option value="DOR">DOR - Dorchester</option>
+                        <option value="EMP">EMP - Emporia</option>
+                        <option value="ESX">ESX - Essex</option>
+                        <option value="ESS">ESS - Essex (NJ)</option>
+                        <option value="FCY">FCY - Fairfax City</option>
+                        <option value="FFX">FFX - Fairfax County</option>
+                        <option value="FLS">FLS - Falls Church</option>
+                        <option value="FAQ">FAQ - Fauquier</option>
+                        <option value="FLU">FLU - Fluvanna</option>
+                        <option value="FRA">FRA - Franklin City (VA)</option>
+                        <option value="FRN">FRN - Franklin Co. (PA)</option>
+                        <option value="FRD">FRD - Frederick Co. (MD)</option>
+                        <option value="FRK">FRK - Frederick Co. (VA)</option>
+                        <option value="FRE">FRE - Fredericksburg</option>
+                        <option value="FUL">FUL - Fulton</option>
+                        <option value="GAR">GAR - Garrett</option>
+                        <option value="GAT">GAT - Gates</option>
+                        <option value="GLO">GLO - Gloucester</option>
+                        <option value="GLJ">GLJ - Gloucester (NJ)</option>
+                        <option value="GOO">GOO - Goochland</option>
+                        <option value="GRA">GRA - Grant</option>
+                        <option value="GRE">GRE - Greene</option>
+                        <option value="GRV">GRV - Greensville</option>
+                        <option value="HAL">HAL - Halifax</option>
+                        <option value="HAM">HAM - Hampshire</option>
+                        <option value="HAV">HAV - Hampton</option>
+                        <option value="HRT">HRT - Hampton Roads</option>
+                        <option value="HAN">HAN - Hanover</option>
+                        <option value="HRD">HRD - Hardy</option>
+                        <option value="HFD">HFD - Harford</option>
+                        <option value="HAR">HAR - Harrisonburg</option>
+                        <option value="HEN">HEN - Henrico</option>
+                        <option value="HER">HER - Hertford</option>
+                        <option value="HIG">HIG - Highland</option>
+                        <option value="HOP">HOP - Hopewell</option>
+                        <option value="HOW">HOW - Howard</option>
+                        <option value="HUD">HUD - Hudson</option>
+                        <option value="HUN">HUN - Hunterdon</option>
+                        <option value="IW">IW - Isle of Wight</option>
+                        <option value="JC">JC - James City County</option>
+                        <option value="JEF">JEF - Jefferson</option>
+                        <option value="KEN">KEN - Kent (DE)</option>
+                        <option value="KNT">KNT - Kent (MD)</option>
+                        <option value="KQ">KQ - King and Queen</option>
+                        <option value="KGC">KGC - King George</option>
+                        <option value="KWC">KWC - King William</option>
+                        <option value="LAN">LAN - Lancaster (PA)</option>
+                        <option value="LNV">LNV - Lancaster (VA)</option>
+                        <option value="LEB">LEB - Lebanon</option>
+                        <option value="LEH">LEH - Lehigh</option>
+                        <option value="LEX">LEX - Lexington City</option>
+                        <option value="LDN">LDN - Loudoun County</option>
+                        <option value="LOU">LOU - Louisa</option>
+                        <option value="LUN">LUN - Lunenburg</option>
+                        <option value="LYN">LYN - Lynchburg City</option>
+                        <option value="MAD">MAD - Madison</option>
+                        <option value="MAN">MAN - Manassas</option>
+                        <option value="MNP">MNP - Manassas Park</option>
+                        <option value="MAR">MAR - Marion</option>
+                        <option value="MAT">MAT - Mathews</option>
+                        <option value="MEC">MEC - Mecklenburg</option>
+                        <option value="MER">MER - Mercer</option>
+                        <option value="MDL">MDL - Middlesex (NJ)</option>
+                        <option value="MID">MID - Middlessex</option>
+                        <option value="MIN">MIN - Mineral</option>
+                        <option value="MNM">MNM - Monmouth</option>
+                        <option value="MON">MON - Monogalia</option>
+                        <option value="MC">MC - Montgomery County (MD)</option>
+                        <option value="MTG">MTG - Montgomery County (PA)</option>
+                        <option value="MOR">MOR - Morgan</option>
+                        <option value="MRS">MRS - Morris</option>
+                        <option value="NEL">NEL - Nelson</option>
+                        <option value="NCS">NCS - New Castle</option>
+                        <option value="NK">NK - New Kent</option>
+                        <option value="NN">NN - Newport News</option>
+                        <option value="NOR">NOR - Norfolk</option>
+                        <option value="NH">NH - Northampton</option>
+                        <option value="NE">NE - Northeast (DC)</option>
+                        <option value="NTU">NTU - Northumberland</option>
+                        <option value="NW">NW - Northwest (DC)</option>
+                        <option value="NOT">NOT - Nottoway</option>
+                        <option value="OCE">OCE - Ocean</option>
+                        <option value="ORN">ORN - Orange</option>
+                        <option value="PAG">PAG - Page</option>
+                        <option value="PAS">PAS - Pasquotank</option>
+                        <option value="PSC">PSC - Passaic</option>
+                        <option value="PEN">PEN - Pendleton</option>
+                        <option value="PER">PER - Perry</option>
+                        <option value="PET">PET - Petersburg</option>
+                        <option value="PHL">PHL - Philadelphia</option>
+                        <option value="PIT">PIT - Pittsylvania</option>
+                        <option value="PTY">PTY - Pittsylvania</option>
+                        <option value="POQ">POQ - Poquoson</option>
+                        <option value="POR">POR - Portsmouth</option>
+                        <option value="POW">POW - Powhatan</option>
+                        <option value="PRE">PRE - Preston</option>
+                        <option value="PEC">PEC - Prince Edward</option>
+                        <option value="PGV">PGV - Prince George (VA)</option>
+                        <option value="PGC">PGC - Prince George's County</option>
+                        <option value="PWC">PWC - Prince William County</option>
+                        <option value="QAC">QAC - Queen Anne</option>
+                        <option value="RAN">RAN - Randolph</option>
+                        <option value="RAP">RAP - Rappahannock</option>
+                        <option value="RIC">RIC - Richmond (City)</option>
+                        <option value="RC">RC - Richmond (County)</option>
+                        <option value="ROA">ROA - Roanoke</option>
+                        <option value="ROK">ROK - Rockbridge</option>
+                        <option value="ROC">ROC - Rockingham</option>
+                        <option value="SAL">SAL - Salem</option>
+                        <option value="SHE">SHE - Shenandoah</option>
+                        <option value="SOM">SOM - Somerset</option>
+                        <option value="SMS">SMS - Somerset (NJ)</option>
+                        <option value="SB">SB - South Boston</option>
+                        <option value="SH">SH - Southampton</option>
+                        <option value="SE">SE - Southeast (DC)</option>
+                        <option value="SW">SW - Southwest (DC)</option>
+                        <option value="SPO">SPO - Spotsylvania</option>
+                        <option value="STM">STM - St. Mary's</option>
+                        <option value="STA">STA - Stafford</option>
+                        <option value="STN">STN - Staunton</option>
+                        <option value="SUF">SUF - Suffolk</option>
+                        <option value="SUR">SUR - Surry</option>
+                        <option value="SUS">SUS - Sussex (DE)</option>
+                        <option value="SUJ">SUJ - Sussex (NJ)</option>
+                        <option value="SUV">SUV - Sussex (VA)</option>
+                        <option value="TAL">TAL - Talbot</option>
+                        <option value="TUC">TUC - Tucker</option>
+                        <option value="UNI">UNI - Union</option>
+                        <option value="VB">VB - Viginia Beach</option>
+                        <option value="WAR">WAR - Warren</option>
+                        <option value="WRN">WRN - Warren (NJ)</option>
+                        <option value="WAS">WAS - Washington County</option>
+                        <option value="DC">DC - Washington,DC</option>
+                        <option value="WAY">WAY - Waynesboro</option>
+                        <option value="WST">WST - Westmoreland</option>
+                        <option value="WIC">WIC - Wicomico</option>
+                        <option value="WIL">WIL - Williamsburg</option>
+                        <option value="WIN">WIN - Winchester</option>
+                        <option value="WOR">WOR - Worcester</option>
+                        <option value="YOR">YOR - York (PA)</option>
+                        <option value="YRV">YRV - York (VA)</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td style="float:left;"><input type="hidden" name="savenewemployer" id="savenewemployer" value="Save"
+                                               onclick="checkSaveEmployerDuringReg(this.form)"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h5>Disclaimer</h5>
+        <span class="share" style="font-size:0.8em;">
+            <input type="checkbox" id="marketingEmails" name="marketingEmails" checked="checked"> 
+            General communications you receive from Commuter Connections will pertain to carpools, vanpools and/or
+            your
+            Guaranteed Ride Home (GRH) account or other programs you have registered for.
+            From time to time, Commuter Connections sends emails about free special commuter events such as Bike to
+            Work
+            Day and other information related to commuting.
+            If you do not wish to receive these additional communications, please uncheck this box.
+        </span>
+        <br /><br />
+        <span class="share" style="font-size:0.8em;">
+            <input type="checkbox" name="disclaimer" value="yes"> 
+            I certify that I am at least 18 years old and that I have the right, authority and capacity to enter into and abide by the
+            <a href="#terms_of_use" class="green">Terms of Use</a>
+            for the CarpoolNow mobile application.
+        </span>
+        <div class="content-padded">
+            <button id="signup_submit" class="btn btn-primary btn-block" type="button"
+                    onclick="checkNewRegistration(this.form)">Create Account
+            </button>
+            <button id="goback" class="btn btn-block">Go Back</button>
+        </div>
+    </form>
+
+    <br><br>
+    <div class="bar-standard ">
+        Brought to you by Metropolitan Washington
+        Council of Governments.
+        <a href="https://tdm.commuterconnections.org/mwcog/" target="_blank"><b>Learn More</b></a>
+    </div>
+</div>
+<script type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/SiteValidations.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/JavascriptUtils.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/EmployerValidations.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/CommuterValidations.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/GRHValidations.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/PoolValidations.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/SpecialEventsValidations.js"></script>
+<script language="JavaScript" type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/IncentivesValidations.js"></script>
+
+<script type="text/javascript">
+    var imageSite_Id = 10001;
+    var imageSysAdmin = false;
+</script>
+<script type="text/javascript"
+        src="https://tdm.commuterconnections.org/mwcog/includes/javascript/ClickHandlers.js"></script>
+<script type="text/javascript">
+    var httpRequest;
+
+    function getProfile(baseURL, username) {
+        var url = baseURL + username;
+        if (username == "") {
+            alert("Please enter a user name.");
+            document.getElementById('userName').focus();
+            return false;
+        } else if (username.length < 8 || username.length > 12) {
+            alert("User Name must be 8 to 12 characters.");
+            document.getElementById('userName').focus();
+            return false;
+        }
+        try {
+            httpRequest = new XMLHttpRequest();
+        } catch (e) {
+            try {
+                httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    alert("Your browser does not support AJAX!");
+                    return false;
+                }
+            }
+        }
+        httpRequest.open("GET", url, true);
+        httpRequest.onreadystatechange = function () {
+            processRequest();
+        };
+        httpRequest.send(null);
+    }
+
+    function processRequest() {
+        if (httpRequest.readyState == 4) {
+            document.getElementById("profileSection").innerHTML = httpRequest.responseText;
+        }
+    }
+</script>
+
+
+<script>
+    $(document).ready(function ($) {
+        $('.info').info();
+    });
+
+    //superbappsolutions.com input type is number maxlength js
+    $('input[type="number"]').on('keyup keydown', function (e) {
+        var a = $(e.target);
+        if (a.val().length > a.attr('maxlength')) {
+            a.val(a.val().substr(0, a.attr('maxlength')));
+        }
+    });
+
+    // FOR DEBUG
+    //    app_alert = function (message, alertCallback, title, buttonName) {
+    //        if (buttonName === null) {
+    //            buttonName = "OK"
+    //        }
+    //        alert(message);
+    //        if (_.isFunction(alertCallback)) {
+    //            alertCallback();
+    //        }
+    //    };
+
+</script>
+
+<div id="terms_of_use" class="modal">
+    <header class="bar bar-nav">
+        <!--<a class="icon icon-close pull-right" href="#terms_of_use"></a>-->
+        <a class="close_modal pull-right" href="#terms_of_use"><i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+        <h1 class="title">Terms of Use Statement</h1>
+    </header>
+    <div class="content">
+        <div class="content-padded">
+            <br>
+            <b>CarpoolNow Terms of Use</b>
+            <br><br>
+            The purpose of this mobile application (“mobile app”) is to provide state-of-the-art tools, information and
+            services for various commuter programs designed to mitigate congestion and provide commuting alternatives.
+            The Terms of Use spell out what you can expect from us and what we expect from you. By accessing any areas
+            of CarpoolNow.org or CarpoolNow.com (the “CarpoolNow mobile app”) riders and drivers, individually (“User”)
+            and collectively (“Users”), agree to be legally bound and to abide by the terms set forth below. The
+            CarpoolNow mobile app is owned and operated by Commuter Connections and the Metropolitan Washington Council
+            of Governments (“MWCOG”). Any references herein to the CarpoolNow mobile app shall be deemed to refer to
+            Commuter Connections, as applicable under the circumstances.
+            <br><br>
+            Please read these Terms of Use carefully. By accessing, using or continuing to use this mobile application,
+            Users agree to accept and to be bound by all of these Terms of Use. If User does not agree to accept and/or
+            does not agree to be bound by all of these Terms of Use, then User is not to access, use, or continue to use
+            the CarpoolNow mobile app in any way whatsoever.
+            <br><br>
+            <b>I. TRADEMARKS</b>
+            <br><br>
+            The CarpoolNow mobile app is a trademark of Commuter Connections and MWCOG. All rights reserved. These and
+            other Commuter Connections’ graphics, logos and service marks and trademarks of Commuter Connections and its
+            affiliates may not be used without prior written consent of Commuter Connections. All other trademarks,
+            product names, and company names and logos appearing on the CarpoolNow mobile app are the property of their
+            respective owners.
+            <br><br>
+            <b>II. DISCLAIMERS AND LIMITATION OF LIABILITY</b>
+            <br><br>
+            User expressly agrees that the use of Commuter Connections services, including but not limited to
+            Ridematching, a service which will allow drivers and passengers to connect to each other, is at User’s sole
+            risk. Neither Commuter Connections or MWCOG, nor their affiliates, nor any of their officers, directors,
+            employees, agents, third-party content providers, merchants, sponsors, or licensors (collectively,
+            “Providers”), or the like, warrant that the CarpoolNow mobile app will be uninterrupted or error-free; nor
+            do they make any warranty as to the results that may be obtained from the use of the CarpoolNow mobile app,
+            or as to the accuracy, reliability or currency of any information content, service, or merchandise provided
+            through Commuter Connections.
+            <br><br>
+            THIS MOBILE APP IS PROVIDED BY COMMUTER CONNECTIONS ON AN “AS IS” AND “AS AVAILABLE” BASIS. COMMUTER
+            CONNECTIONS AND MWCOG MAKE NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE
+            OPERATION OF THE APP, THE INFORMATION, CONTENT, MATERIAL OR PRODUCTS, INCLUDED ON THIS MOBILE APP. TO THE
+            FULL EXTENT PERMISSIBLE BY APPLICABLE LAW, COMMUTER CONNECTIONS AND MWCOG DISCLAIM ALL WARRANTIES, EXPRESS
+            OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS OF A PARTICULAR
+            PURPOSE. COMMUTER CONNECTIONS AND MWCOG WILL NOT BE LIABLE FOR ANY DAMAGES OF ANY KIND ARISING FROM THE USE
+            OF THIS MOBILE APP, INCLUDING BUT NOT LIMITED TO DIRECT, INDIRECT, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL
+            DAMAGES. NO ORAL ADVICE OR WRITTEN INFORMATION GIVEN BY COMMUTER CONNECTIONS OR MWCOG OR THEIR AFFILIATES,
+            OR ANY OF THEIR OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, PROVIDERS, OR THE LIKE, SHALL CREATE A WARRANTY; NOR
+            SHALL USER RELY ON ANY SUCH INFORMATION OR ADVICE.
+            <br><br>
+            UNDER NO CIRCUMSTANCES SHALL COMMUTER CONNECTIONS OR MWCOG OR ANY OTHER PARTY INVOLVED IN CREATING,
+            PRODUCING OR DISTRIBUTING THE CARPOOLNOW MOBILE APP BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+            OR CONSEQUENTIAL DAMAGES THAT RESULT FROM THE USE OF OR INABILITY TO USE THE MOBILE APP, INCLUDING, BUT NOT
+            LIMITED TO, RELIANCE BY A USER ON ANY INFORMATION OBTAINED FROM COMMUTER CONNECTIONS OR MWCOG OR THAT RESULT
+            FROM MISTAKES, OMISSIONS, INTERRUPTIONS, DELETION OF FILES OR EMAILS, ERRORS, DEFECTS, VIRUSES, DELAYS IN
+            OPERATION OR TRANSMISSION, OR ANY FAILURE OF PERFORMANCE, WHETHER OR NOT RESULTING FROM ACTS OF GOD,
+            COMMUNICATIONS FAILURE, THEFT, DESTRUCTION, OR UNAUTHORIZED ACCESS TO COMMUTER CONNECTIONS’ RECORDS,
+            PROGRAMS, OR SERVICES. USER ACKNOWLEDGES THAT THIS PARAGRAPH SHALL APPLY TO ALL CONTENT AND SERVICES
+            AVAILABLE THROUGH COMMUTER CONNECTIONS. BECAUSE SOME STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF
+            LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, IN SUCH STATES LIABILITY IS LIMITED TO THE FULLEST EXTENT
+            PERMITTED BY LAW.
+            <br><br>
+            User is responsible for obtaining the data network access necessary to use the Services. User’s mobile
+            network's data and messaging rates and fees may apply if User accesses or uses the Services from a
+            wireless-enabled device. User is responsible for acquiring and updating to compatible hardware or devices
+            necessary to access and use the Services and Applications and any updates thereto. Commuter Connections does
+            not guarantee that the Services, or any portion thereof, will function on any particular hardware or device.
+            In addition, the Services may be subject to malfunctions and delays inherent in the use of the Internet and
+            electronic communications.
+            <br><br>
+            <b>III. CONTENT</b>
+            <br><br>
+            a. PROPRIETARY RIGHTS
+            <br><br>
+            User acknowledges that the CarpoolNow mobile app contains information, data, software, photographs,
+            typefaces, graphics, music, sounds, and other material (collectively “Content”) that are protected by
+            copyrights, trademarks, trade secrets, or other proprietary rights, and that these rights are valid and
+            protected in all forms, media and technologies existing now or hereinafter developed. All Content is
+            copyrighted as a collective work under the U.S. copyright laws, and Commuter Connections owns a copyright in
+            the selection, coordination, arrangement, and enhancement of such Content. User may not modify, remove,
+            delete, augment, add to, publish, transmit, participate in the transfer or sale of, create derivative works
+            from, or in any way exploit any of the Content, in whole or in part. If no specific restrictions are
+            displayed, a User may make copies of select portions of the Content, provided that the copies are made only
+            for User’s personal use or to generate carpool matchlists for commuters without smart phone or Internet
+            access which will include the names and contact information of drivers and passengers, and that User
+            maintains any notices contained in the Content, such as all copyright notices, trademark legends, or other
+            proprietary rights notices. Except as provided in the preceding sentence or as permitted by the fair use
+            privilege under the U.S. copyright laws (see, e.g., 17 U.S.C. Section 107), User may not upload, post,
+            reproduce, or distribute in any way Content protected by copyright, or other proprietary right, without
+            obtaining permission of the owner of the copyright or other propriety right. In addition to the foregoing,
+            use of any software Content shall be governed by the software license agreement accompanying such software.
+            <br><br>
+            b. THIRD-PARTY CONTENT
+            <br><br>
+            Any opinions, advice, statements, services, offers, or other information that constitutes part of Content
+            expressed or made available by third parties, including Providers or any other User of Commuter Connections,
+            are those of the respective authors or distributors and not of Commuter Connections or MWCOG or their
+            affiliates or any of their officers, directors, employees, or agents. Neither Commuter Connections nor MWCOG
+            nor their affiliates, nor any of their officers, directors, employees, or agents, nor any third party,
+            including any Provider, or any other User of the CarpoolNow mobile app, guarantees the accuracy,
+            completeness, or usefulness of any Content, nor its merchantability or fitness for any particular purpose.
+            Under no circumstances shall Commuter Connections or MWCOG, or their affiliates, or any of their officers,
+            directors, employees, or agents be liable for any loss, damage or harm caused by a User’s reliance on
+            information obtained through the CarpoolNow mobile app. It is the responsibility of User to evaluate the
+            information, opinion, advice, or other Content available through the CarpoolNow mobile app and Commuter
+            Connections.
+            <br><br>
+            c. EXPORT
+            <br><br>
+            The U.S. export control laws regulate the export and re-export of technology originating in the United
+            States. This includes the electronic transmission of information and software to foreign countries and to
+            certain foreign nationals. User agrees to abide by these laws and their regulations – including, but not
+            limited to, the Export Administration Act and the Arms Export Control Act – and not to transfer, by
+            electronic transmission or otherwise, any Content derived from the CarpoolNow mobile app and/or Commuter
+            Connections to either a foreign national or a foreign destination in violation of such laws.
+            <br><br>
+            <b>IV. MOBILE APP CONDUCT</b>
+            <br><br>
+            User agrees, through User’s use of this service, that User will not use this mobile app to post any material
+            which is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene,
+            profane, sexually oriented, threatening, invasive of a person’s privacy, or otherwise violating any law,
+            including, but not limited to, any material that encourages conduct that would constitute a criminal
+            offense, give rise to civil liability, or otherwise violate any applicable local, state, national, or
+            international law. User agrees not to post any copyrighted material unless the copyright is owned by User or
+            by the mobile app. Although Commuter Connections and MWCOG do not and cannot review the electronic
+            communications posted and are not responsible for the content of any of these messages, Commuter Connections
+            reserves the right to delete any electronic communication for any or no reason whatsoever. User remains
+            solely responsible for the content of the electronic communication, and User agrees to indemnify and hold
+            harmless MWCOG and Commuter Connections, and their agents with respect to any claim, including attorney’s
+            fees incurred responding to such claim, based upon transmission of User’s message(s), to the full extent
+            permitted by applicable law.
+            <br><br>
+            Commuter Connections may disclose any Content or electronic communication of any kind (i) to satisfy any
+            law, regulation, or government request; (ii) if such disclosure is necessary or appropriate to operate
+            Commuter Connections; or (iii) to protect the rights or property of Commuter Connections, its Users or
+            Providers, and MWCOG. Commuter Connections reserves the right to prohibit conduct, communication, or Content
+            that it deems in its sole discretion to be harmful to individual Users, Commuter Connections, MWCOG, the
+            communities that Commuter Connections serves, or any rights of Commuter Connections or any third party, or
+            to violate any applicable law. Notwithstanding the foregoing, neither Commuter Connections nor its Providers
+            can ensure prompt removal of questionable Content after online posting. Accordingly, neither Commuter
+            Connections nor MWCOG, nor their affiliates, nor any of their officers, directors, employees, or agents, nor
+            Providers shall assume liability for any action or inaction with respect to conduct, communication, or
+            Content on Commuter Connections.
+            <br><br>
+            <b>V. PRIVACY POLICY</b>
+            <br><br>
+            In accordance with the terms of Commuter Connections’ Privacy Policy, Commuter Connections respects the
+            privacy of its Users. Commuter Connections collects information about Users when they use its mobile
+            applications, websites, and other online products and services (collectively, the “Services”) and through
+            other interactions and communications via email or through the Commuter Connections call center.
+            <br><br>
+            All personal information provided to the CarpoolNow mobile app is used for Ridematching or other commuter
+            program request purposes only. All personal information will remain confidential. Commuter Connections will
+            not share or sell User information to outside organizations or companies.
+            <br><br>
+            Commuter Connections collects information Users provide directly, such as when User creates or modifies
+            User’s account, requests on-demand carpool services, contacts the Commuter Connections call center via email
+            or by telephone, or directly communicates with Commuter Connections in any way. This information may
+            include: name, email, phone number(s), postal address, profile picture, and other information User chooses
+            to provide. Commuter Connections does not provide transportation services and is not a transportation
+            carrier. It is up to User’s sole discretion to decide whether or not to offer or accept a ride through the
+            CarpoolNow mobile app.
+            <br><br>
+
+            Commuters determine what contact information they share with other commuters. Your home address is not given
+            to other commuters, unless the commuter elects to share it with other commuters through their commuter
+            profile.<br><br>
+
+            When you, as a User, use these Services, Commuter Connections (“we”) collects information about User in the
+            following general categories:
+            <br><br>
+
+            <ul>
+                <li><b>Location Information:</b>
+                    When you use the Services for transportation or delivery, we collect precise location data about the
+                    trip from the CarpoolNow mobile app used by the driver. If you permit the mobile app to access
+                    location services through the permission system used by your mobile phone’s operating system, we may
+                    also collect the precise location of your device when the mobile app is running in the foreground or
+                    background. We may also derive your approximate location from your IP address.
+                </li>
+                <li><b>Contacts Information:</b>
+                    If you permit the mobile app to access the address book on your device through the permission system
+                    used by your mobile phone’s operating system we may access and store names and contact information
+                    from your address book to facilitate social interactions through our Services and for other purposes
+                    described in this Statement or at the time of consent or collection.
+                </li>
+
+                <li><b>Transaction Information:</b>
+                    We collect transaction details related to your use of our Services, including the type of service
+                    requested, date and time the service was provided, distance traveled, and other related transaction
+                    details.
+                </li>
+
+                <li><b>Usage and Preference Information:</b>
+                    We collect information about how you and site visitors interact with our Services, preferences
+                    expressed, and settings chosen. In some cases, we do this through the use of cookies, pixel tags,
+                    and similar technologies that create and maintain unique identifiers.
+                </li>
+
+                <li><b>Device Information:</b>
+                    We may collect information about your mobile operating device, including, for example, the hardware
+                    model, operating system and version, software and file names and versions, preferred language,
+                    unique device identifier, advertising identifiers, serial number, device motion information, and
+                    mobile network information.
+                </li>
+
+                <li><b>Call and SMS Data:</b>
+                    Our Services facilitate communications between Riders and Drivers. In connection with facilitating
+                    this service, we receive call data, including the date and time of the call or SMS message, the
+                    parties’ phone numbers, and the content of the SMS message.
+                </li>
+
+                <li><b>Log Information:</b>
+                    When you interact with the CarpoolNow mobile app, we collect server logs, which may include
+                    information like device IP address, access dates and times, app features or pages viewed, app
+                    crashes and other system activity, type of browser, and the third-party site or service you were
+                    using before interacting with our Services.
+                </li>
+            </ul>
+            <br><br>
+            Most mobile platforms have defined certain types of device data that mobile apps cannot access without
+            User’s consent. These platforms may have different permission systems for obtaining User’s consent. For more
+            information on platform level permissions that the mobile app may seek, User should visit your smart phone
+            applications permissions web site page.
+            <br><br>
+            We request permission for the CarpoolNow mobile app collection of precise location from your device per the
+            permission system used by your mobile phone’s operating system. If you initially permit the collection of
+            this information, you can later disable it by changing the location settings on your mobile device. However,
+            this will limit your ability to use certain the CarpoolNow mobile app features. Additionally, disabling the
+            mobile app’s collection of precise location from your device will not limit our ability to collect your trip
+            location information from a rider’s or driver's device nor our ability to derive approximate location from
+            your IP address.
+            <br><br>
+
+            We may seek permission for Commuter Connections’ app’s collection and syncing of contact information from
+            your device per the permission system used by your mobile operating system.
+            <br><br>
+            Commuter Connections may also receive information from other sources and combine that with information we
+            collect through the CarpoolNow mobile app. For example:
+            <br><br>
+
+            • If you choose to link, create, or log in to your Commuter Connections account with a social media service,
+            or if you engage with a separate app or website that uses our Application Programming Interface (“API”) (or
+            whose API we use), we may receive information about you or your connections from that site or app.
+            <br><br>
+            • If you also interact with our programs in another capacity, for instance as a user of other mobile apps or
+            web sites we provide, we may combine or associate that information with information we have collected from
+            you in your capacity as a CarpoolNow mobile app User. We may use the information we collect about you to:
+            <br><br>
+            <ul>
+                <li>Provide, maintain and improve our programs services, including, for example, to send you information
+                    or provide products and services you request, develop new features, provide customer support to
+                    riders and drivers, authenticate Users, and send product updates and administrative messages;
+                </li>
+                <li>Perform internal operations, including, for example, to prevent fraud and abuse of our program
+                    services; to troubleshoot software bugs and operational problems; to conduct data analysis, testing,
+                    and research; and to monitor and analyze usage and activity trends;
+                </li>
+
+                <li>Send or facilitate communications (i) between you and a driver, such as estimated times of arrival,
+                    or (ii) between you and a contact of yours at your direction in connection with your use of certain
+                    features, such as referrals, invites, or estimated time of arrival sharing;
+                </li>
+
+                <li>Send you communications we think will be of interest to you, including information about products,
+                    services, promotions, news, and events of Commuter Connections, where permissible and according to
+                    local applicable laws; and to process contest, sweepstake, or other promotion entries and fulfill
+                    any related awards. You may opt out of receiving promotional messages from us by following the
+                    instructions in those messages. If you opt out, we may still send you non-promotional
+                    communications, such as those about your account, about Services you have requested, or our ongoing
+                    business relations;
+                </li>
+
+                <li>Personalize and improve the services, including to provide or recommend features, content, social
+                    connections, referrals, and advertisements.
+                </li>
+            </ul>
+            <br><br>
+            <b>VI. SHARING OF INFORMATION</b>
+            <br><br>
+            We may share the information we collect about you as described in the Terms of Use or as described at the
+            time of collection or sharing, including as follows:
+            <br><br>
+            Through Commuter Connections
+            <br><br>
+            • Between Users to enable them to provide the carpool services you request. For example, we share your name,
+            photo (if you provide one), and pickup and/or drop-off locations;
+
+            <br><br>
+            • With other Users; and with other people, as directed by you, such as when you want to share your estimated
+            time of arrival;
+            <br><br>
+            • With the general public if you submit content in a public forum, such as blog comments,
+            social media posts, or other features of our program services that are viewable by the general public;
+            <br><br>
+            • With third parties whom you choose to let us share information, for example other apps
+            or websites that integrate with our API or Services, or those with an API or Service with
+            which we integrate; and
+            <br><br>
+            • With vendors, consultants, marketing partners, and other service providers who need access
+            to such information to carry out work on our behalf;
+            <br><br>
+            • In response to a request for information by a competent authority if disclosure is
+            in accordance with, or is otherwise required by, any applicable law, regulation, or legal
+            process;
+            <br><br>
+            • With law enforcement officials, government authorities, or other third parties if we believe
+            your actions are inconsistent with our User agreements, Terms of Service, or policies, or to
+            protect the rights, property, or safety;
+            <br><br>
+            • If we otherwise notify you and you consent to the sharing; and
+            <br><br>
+            • In an aggregated and/or anonymized form which cannot reasonably be used to identify you.
+            <br><br>
+
+            The CarpoolNow mobile app may integrate with social sharing features and other related tools which let you
+            share actions you take on our Services with other apps, sites, or media, and vice versa. Your use of such
+            features enables the sharing of information with your friends or the public, depending on the settings you
+            establish with the social sharing service. Please refer to the privacy policies of those social sharing
+            services for more information about how they handle the data you provide to or share through them.
+
+            <br><br>
+            <b>VII. TERMINATION OF USE</b>
+            <br><br>
+            Commuter Connections may terminate User’s access, or suspend any User’s access to all or part of the
+            CarpoolNow mobile app or Commuter Connections, without prior notice or liability for any reason whatsoever,
+            including without limitation conduct that Commuter Connections, in its sole discretion, believes is in
+            violation of any applicable law or is harmful to the interests of another User, a third-party Provider, a
+            service provider, or Commuter Connections.
+            <br><br>
+            You may correct your account information at any time by logging into your online or mobile app
+            account. If you wish to cancel your account, please email us at ridematching@mwcog.org. Please note
+            that in some cases we may retain certain information about you for evaluation purposes such as your name and
+            contact information including but not limited to phone number(s), and email addresses.
+            <br><br>
+            Commuter Connections will comply with individual’s requests regarding access, correction, and/or deletion of
+            the personal data it stores in accordance with applicable law. You understand and agree that all information
+            submitted by You through the CarpoolNow mobile app or otherwise to Commuter Connections becomes the property
+            of Commuter Connections and MWCOG and may be used in the sole discretion of Commuter Connections in
+            accordance with the Privacy Policy and the Terms of Use.
+            <br><br>
+            <b>VIII. USAGE BY CHILDREN UNDER 18</b>
+            <br><br>
+            Commuter Connections and MWCOG cannot prohibit minors from visiting this mobile app site. Commuter
+            Connections and MWCOG must rely on parents, guardians and those responsible for supervising children under
+            18 to accompany them when using this service. The CarpoolNow mobile app is available only to, and may only
+            be used by individuals who can form legally binding contracts under applicable law. Without limiting the
+            foregoing, the CarpoolNow mobile app is not available to minors or Users who have had their User account
+            temporarily or permanently deactivated and would be responsible in accompanying a minor while using this
+            service. By becoming a User, you represent and warrant that you are at least 18 years old and that you have
+            the right, authority and capacity to enter into and abide by the terms and conditions of this Agreement.
+            <br><br>
+            <b>IX. APPLICABLE LAW</b>
+            <br><br>
+            This site is created and controlled by Commuter Connections in Washington, D.C. As such, the laws of the
+            District of Columbia will govern these disclaimers, terms and conditions, without giving effect to any
+            principles of conflicts of laws. User hereby irrevocably and unconditionally consents to submit to the
+            exclusive jurisdiction of the courts of the District of Columbia and of the United States of America for any
+            litigation arising out of or relating to use of the CarpoolNow mobile app (and agrees not to commence any
+            litigation relating thereto except in such courts), waives any objection to the laying of venue of any such
+            litigation in the District of Columbia courts and agrees not to plead or claim in any District of Columbia
+            Court that such litigation brought therein has been brought in an inconvenient forum.
+            <br><br>
+            <b>X. SEVERABILITY</b>
+            <br><br>
+            The provisions of these Terms of Use are intended to be severable. If for any reason any provision of these
+            Terms of Use shall be held invalid or unenforceable in whole or in part in any jurisdiction, such provision
+            shall, as to such jurisdiction, be ineffective to the extent of such invalidity or unenforceability without
+            in any manner affecting the validity or enforceability thereof in any other jurisdiction or the remaining
+            provisions hereof in any jurisdiction.
+            <br><br>
+            <b>XI. MODIFICATION</b>
+            <br><br>
+            Commuter Connections reserves the right to amend these Terms of Use at any time and will update these Terms
+            of Use in the event of any such amendments. It is User’s sole responsibility to check the CarpoolNow mobile
+            app to view any such changes to the Terms of Use. If you continue to use the CarpoolNow mobile app, you
+            signify your agreement to our revisions to these Terms of Use
+            <br><br>
+
+            <b>XII. ASSIGNMENT</b>
+            <br><br>
+            Commuter Connections may assign or delegate these Terms of Use, in whole or in part, to any person or entity
+            at any time with or without your consent. You may not assign or delegate any rights or obligations under the
+            Terms of Use or Privacy Policy without Commuter Connections prior written consent, and any unauthorized
+            assignment and delegation by you is void. You may not authorize third parties to use your account.
+            <br><br>
+
+            <b>XIII. OTHER PROVISIONS</b>
+            <br><br>
+
+            The Terms of Use, including all documents referenced herein, represent the entire understanding between User
+            and Commuter Connections regarding your relationship with Commuter Connections and supersedes any prior
+            statements or representations. YOU AGREE TO BE BOUND BY THE TERMS OF USE by using the Commuter Connections
+            the CarpoolNow mobile app. The aforementioned Terms of Use are subject to change without notice to you, the
+            User.
+            <br><br>
+            If any provision of these Terms of Use is held to be invalid or unenforceable, such provision will be struck
+            and the remaining provisions enforced.  Headings are for reference purposes only. Failure on Commuter
+            Connections’ part to act with respect to a breach by User or others does not waive Commuter Connections’ or
+            MWCOG’s right to act with respect to subsequent or similar breaches. These Terms of Use, and all writings
+            and CarpolNow mobile app functionality incorporated by reference into these Terms of Use, set forth the
+            entire understanding and agreement.
+            <br><br>
+            We may change this Statement from time to time. If we make significant changes in the way we treat your
+            personal information, or to the Terms of Use, we will provide you notice through the Services or by some
+            other means, such as email. Your continued use of the Services after such notice constitutes your consent to
+            the changes. We encourage you to periodically review the the CarpoolNow mobile app Terms of Use for the
+            latest information on our privacy practices
+            <br><br>
+            <br><br>
+
+            If you have any questions about the Terms of Use, please contact us at ridematching@mwcog.org
+            or contact us at:
+            <br><br>
+            Commuter Connections            <br><br>
+            777 North Capitol Street, NE, Suite 300,            <br><br>
+            Washington D.C. 20002
+        </div>
+    </div>
+</div>

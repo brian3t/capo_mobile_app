@@ -1,0 +1,6 @@
+<a class="item" onclick="$(event.target).parents('.item').nextAll('.route_detail').slideToggle();"><p><span class="name"><%= name_initial_from_name(name) %></span>&nbsp;</p>
+<p class="miles_away"><%=(typeof miles_away !== "undefined" && miles_away)?numeral(miles_away).format('0.0') + '  miles away':''%></p></a>
+<p class="route_detail" style="display: none">
+    From <br/><%= pickup_full_address %> <br/>to<br/> <%= dropoff_full_address %>
+</p>
+<button class="btn btn-primary offer" type="button">Offer</button>

@@ -2,6 +2,7 @@ app.views.DashboardView = Backbone.View.extend({
     model: app.cuser,
     initialize: function () {
         this.render();
+        this.model.on("change update", this.render, this);
     },
 
     render: function () {
@@ -10,7 +11,18 @@ app.views.DashboardView = Backbone.View.extend({
     },
 
     events: {
-        "click .logout": "back"
+        "click .logout": "logout"
+    },
+    logout: function (e) {
+        var self = this;
+        app_confirm("Are you sure you want to log out?", function (response) {
+            if (response == true || response == 1) {
+                app.reset_user();
+                self.back();
+            }
+            app.utils.misc.hide_popover();
+            app.is_notification_active = false;
+        })
     },
 
     back: function (event) {

@@ -1,0 +1,35 @@
+<div id="popover" class="popover">
+    <ul class="table-view">
+        <li class="table-view-cell edit_profile">EDIT PROFILE</li>
+        <li onclick="ratchet_popover_dismiss()" class="table-view-cell driver_incentive"><a id="incen_anchor" onclick="ratchet_popover_dismiss()"
+                                                                                            href="#driver_incentive_modal">DRIVER INCENTIVE</a></li>
+        <li class="table-view-cell logout"><a>LOGOUT</a></li>
+    </ul>
+</div>
+<div id="driver_incentive_modal" class="modal">
+    <header class="bar bar-nav">
+        <a class="icon icon-close pull-right" id="driver_incentive_modal_close" onclick="$(app.menuView.el).find('#driver_incentive_modal').rmodal('hide');"></a>
+        <h1 class="title">Driver Incentive</h1>
+    </header>
+    <div class="content">
+        <div class="content-padded pad_more">
+            <span>Drivers can now receive an incentive for picking up riders during peak commute travel times. Work trips in Howard County, MD are eligible.
+<br/><br/>
+To participate in this exciting incentive, please join below!
+            </span>
+            <br/><br/>
+            <div class="float_left w100">
+                <div class="col3" style="margin-top: 5px">
+                    <div id="driver_incentive_toggle" class="toggle no_text">
+                        <div class="toggle-handle"></div>
+                    </div>
+                </div>
+                <div class="col7"><span>I agree to the<br>
+                    <a href="https://www.commuterconnections.org/commuters/ridesharing/carpool-now/participation-guidelines/" onclick="window.open('https://www.commuterconnections.org/commuters/ridesharing/carpool-now/participation-guidelines/', '_system')" class="light_blue_bold">terms and conditions</a></span>
+                </div>
+            </div>
+            <br><br/><br>
+            <button disabled class="btn btn-positive center big agree text-center block" id="driver_incentive_agree"><span>Register</span></button>
+        </div>
+    </div>
+</div>
