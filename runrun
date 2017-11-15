@@ -1,2 +1,0 @@
-adb shell pm uninstall com.mediabeef.carpoolnow
-cordova run android

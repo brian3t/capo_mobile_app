@@ -1,4 +1,0 @@
-cd www/css/compass
-compass cl
-compass watch
-
