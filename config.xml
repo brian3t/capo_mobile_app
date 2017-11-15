@@ -32,7 +32,6 @@
     <gap:plugin name="cordova-plugin-x-toast" source="npm" />
     <feature name="http://api.phonegap.com/1.0/notification" />
     <feature name="http://api.phonegap.com/1.0/file" />
-    <feature name="http://api.phonegap.com/1.0/geolocation" />
     <platform name="blackberry10">
         <icon src="res/icon/blackberry/icon-150.png" />
         <icon src="res/icon/blackberry/icon-144.png" />
@@ -114,5 +113,4 @@
         <variable name="SENDER_ID" value="wide-ceiling-143919" />
     </plugin>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" />
-    <preference name="permissions" value="geolocation" />
 </widget>
