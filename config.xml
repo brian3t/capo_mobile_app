@@ -114,5 +114,5 @@
         <variable name="SENDER_ID" value="wide-ceiling-143919" />
     </plugin>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" />
-    <preference name="permissions" value="none" />
+    <preference name="permissions" value="geolocation" />
 </widget>
