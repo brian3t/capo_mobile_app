@@ -63,11 +63,6 @@
         <icon density="xhdpi" src="res/icon/android/xhdpi.png" />
     </platform>
     <platform name="android">
-            <gap:config-file platform="android" parent="/manifest" mode="add">
-                <uses-permission name="android.permission.ACCESS_COARSE_LOCATION" />
-                <uses-permission name="android.permission.ACCESS_FINE_LOCATION" />
-                <uses-permission name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-            </gap:config-file>
         <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
         <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
         <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
