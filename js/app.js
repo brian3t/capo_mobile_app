@@ -61,6 +61,7 @@ if (typeof IS_LOCAL !== "undefined" && IS_LOCAL) {
     config.restUrl = 'https://' + IP_ADDRESS + '/v1/';
 }
 
+var permissions;
 
 function schedule_idle_local_note() {
     console.log("schedule_idle_local_note");
@@ -283,8 +284,21 @@ var capp = {
 // onError Callback receives a PositionError object
 //
             onError: function (error) {
-                alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
+                // alert('Error Code: ' + error.code + '\n' + 'Message: ' + error.message + '\n');
+
+                permissions = cordova.plugins.permissions;
+                if(typeof(permissions) === 'object') {
+                 permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
+                     if ( status.hasPermission ) {
+                         console.log("geolocation active");
+                     }
+                     else {
+                         console.log("geolocation not active - send request");
+                         permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, permissionsSuccess, permissionsError);
+                     }
+                 });
+                }
+
             }
         },
         onDeviceReady: function () {
@@ -294,6 +308,20 @@ var capp = {
             // cordova.plugins.notification.local.on('click', function (notification) {
             //     console.info(notification);
             // });
+
+            permissions = cordova.plugins.permissions;
+            if(typeof(permissions) === 'object') {
+                 permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
+                     if ( status.hasPermission ) {
+                         console.log("geolocation active");
+                     }
+                     else {
+                         console.log("geolocation not active - send request");
+                         permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, permissionsSuccess, permissionsError);
+                     }
+                 });
+             }
+
             setupPush();
             document.addEventListener("pause", function () {
                 app.state = 'background';
@@ -502,3 +530,14 @@ function testlocal() {
     });
 
 }
+
+function permissionsSuccess( status )
+{
+    if( !status.hasPermission ) permissionsError();
+}
+
+function permissionsError()
+{
+    console.log('TODO: toast message telling user geolocation is off');
+}
+

@@ -366,7 +366,8 @@ function ajax_timeout() {
     app.timeout_count = (app.timeout_count + 1 ) % 4;//only show message every 4 timeout
     if (app.timeout_count === 0) {
         $('.page').removeClass('whirl traditional');
-        app_toast("Service is currently offline");
+        // TODO: when you minimize app in a map view on android, on resume this message keeps coming up
+        // app_toast("Service is currently offline");
     }
 }
 function ajax_timeout_reset() {

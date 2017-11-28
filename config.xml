@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="127" id="com.mediabeef.carpoolnowbriantest" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget android-versionCode="134" id="com.mediabeef.carpoolnow" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>CarpoolNow</name>
     <description>
         CarpoolNow - Real Time Ridematching 
@@ -7,6 +7,11 @@
     <author email="hello@mediabeef.com" href="http://mediabeef.com">
         Media Beef, Inc.
     </author>
+    <!--
+    <gap:config-file parent="/manifest" platform="android">
+        <application android:debuggable="true" />
+    </gap:config-file>
+    -->
     <content src="index.html" />
     <access origin="*" />
     <access origin="http://*.google-analytics.com" />
@@ -20,84 +25,114 @@
     <access origin="https://*.googleapis.com" />
     <access origin="https://*.gstatic.com" />
     <access origin="https://maps.googleapis.com" />
+    <access origin="http://192.168.1.2:8080/*" />
     <allow-navigation href="http://*/*" />
-    <preference name="phonegap-version" value="cli-7.0.1" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="StatusBarBackgroundColor" value="#58567f" />
     <preference name="DisallowOverscroll" value="true" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.2.0" />
     <gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.0" />
     <gap:plugin name="cordova-plugin-x-toast" source="npm" />
+    <gap:plugin name="cordova-plugin-android-permissions" source="npm" version="*" />
+    <preference name="android-targetSdkVersion" value="23" />
+    <preference name="android-minSdkVersion" value="16" />
+    <feature name="http://api.phonegap.com/1.0/notification" />
+    <feature name="http://api.phonegap.com/1.0/file" />
+    <feature name="http://api.phonegap.com/1.0/geolocation" />
     <platform name="blackberry10">
-        <icon src="www/res/icon/blackberry/icon-150.png" />
-        <icon src="www/res/icon/blackberry/icon-144.png" />
-        <icon src="www/res/icon/blackberry/icon-110.png" />
-        <icon src="www/res/icon/blackberry/icon-96.png" />
-        <icon src="www/res/icon/blackberry/icon-90.png" />
-        <icon src="www/res/icon/blackberry/icon-86.png" />
-        <icon src="www/res/icon/blackberry/icon-80.png" />
+        <icon src="res/icon/blackberry/icon-150.png" />
+        <icon src="res/icon/blackberry/icon-144.png" />
+        <icon src="res/icon/blackberry/icon-110.png" />
+        <icon src="res/icon/blackberry/icon-96.png" />
+        <icon src="res/icon/blackberry/icon-90.png" />
+        <icon src="res/icon/blackberry/icon-86.png" />
+        <icon src="res/icon/blackberry/icon-80.png" />
     </platform>
     <platform name="ios">
-        <icon height="180" src="www/res/icon/ios/icon-60@3x.png" width="180" />
-        <icon height="60" src="www/res/icon/ios/icon-60.png" width="60" />
-        <icon height="120" src="www/res/icon/ios/icon-60@2x.png" width="120" />
-        <icon height="76" src="www/res/icon/ios/icon-76.png" width="76" />
-        <icon height="152" src="www/res/icon/ios/icon-76@2x.png" width="152" />
-        <icon height="40" src="www/res/icon/ios/icon-40.png" width="40" />
-        <icon height="80" src="www/res/icon/ios/icon-40@2x.png" width="80" />
-        <icon height="57" src="www/res/icon/ios/icon.png" width="57" />
-        <icon height="114" src="www/res/icon/ios/icon@2x.png" width="114" />
-        <icon height="72" src="www/res/icon/ios/icon-72.png" width="72" />
-        <icon height="144" src="www/res/icon/ios/icon-72@2x.png" width="144" />
-        <icon height="29" src="www/res/icon/ios/icon-small.png" width="29" />
-        <icon height="58" src="www/res/icon/ios/icon-small@2x.png" width="58" />
-        <icon height="50" src="www/res/icon/ios/icon-50.png" width="50" />
-        <icon height="100" src="www/res/icon/ios/icon-50@2x.png" width="100" />
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/icon/ios/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100" />
     </platform>
     <platform name="android">
-        <icon density="ldpi" src="www/res/icon/android/ldpi.png" />
-        <icon density="mdpi" src="www/res/icon/android/mdpi.png" />
-        <icon density="hdpi" src="www/res/icon/android/hdpi.png" />
-        <icon density="xhdpi" src="www/res/icon/android/xhdpi.png" />
+        <icon density="ldpi" src="res/icon/android/ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/xhdpi.png" />
     </platform>
     <platform name="android">
-        <splash density="land-hdpi" src="www/res/screen/android/splash-land-hdpi.png" />
-        <splash density="land-ldpi" src="www/res/screen/android/splash-land-ldpi.png" />
-        <splash density="land-mdpi" src="www/res/screen/android/splash-land-mdpi.png" />
-        <splash density="land-xhdpi" src="www/res/screen/android/splash-land-xhdpi.png" />
-        <splash density="port-hdpi" src="www/res/screen/android/splash-port-hdpi.png" />
-        <splash density="port-ldpi" src="www/res/screen/android/splash-port-ldpi.png" />
-        <splash density="port-mdpi" src="www/res/screen/android/splash-port-mdpi.png" />
-        <splash density="port-xhdpi" src="www/res/screen/android/splash-port-xhdpi.png" />
+        <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
+        <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
+        <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
+        <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png" />
+        <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+        <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+        <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+        <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
     </platform>
     <platform name="ios">
-        <splash height="480" src="www/res/screen/ios/Default~iphone.png" width="320" />
-        <splash height="960" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />
-        <splash height="1024" src="www/res/screen/ios/Default-Portrait~ipad.png" width="768" />
-        <splash height="2048" src="www/res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
-        <splash height="768" src="www/res/screen/ios/Default-Landscape~ipad.png" width="1024" />
-        <splash height="1536" src="www/res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
-        <splash height="1136" src="www/res/screen/ios/Default-568h@2x~iphone.png" width="640" />
-        <splash height="1334" src="www/res/screen/ios/Default-667h.png" width="750" />
-        <splash height="2208" src="www/res/screen/ios/Default-736h.png" width="1242" />
-        <splash height="1242" src="www/res/screen/ios/Default-Landscape-736h.png" width="2208" />
+        <splash height="480" src="res/screen/ios/Default~iphone.png" width="320" />
+        <splash height="960" src="res/screen/ios/Default@2x~iphone.png" width="640" />
+        <splash height="1024" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="768" src="res/screen/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="1136" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="res/screen/ios/Default-667h.png" width="750" />
+        <splash height="2208" src="res/screen/ios/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
     </platform>
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+        <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/acianti/cordova-plugin-local-notifications" />
+    </feature>
     <preference name="android-build-tool" value="gradle" />
+    <gap:config-file mode="delete" parent="/manifest" platform="android">
+        <uses-permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission name="android.permission.READ_EXTERNAL_STORAGE" />
+    </gap:config-file>
+    <gap:config-file mode="add" parent="/manifest" platform="android">
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.NETWORK_ACCESS" />
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+        <uses-feature android:name="android.hardware.location.gps"/>
+        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+        <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    </gap:config-file>
+    <feature id="blackberry.app">
+        <param name="websecurity" value="disable" />
+    </feature>
     <preference gap:platform="blackberry10" name="websecurity" value="disable" />
-    <allow-intent href="geo:*" />
+    <engine name="android" spec="^6.3.0" />
     <engine name="blackberry10" spec="^3.8.0" />
     <engine name="ios" spec="^4.5.3" />
-    <engine name="android" spec="~6.3.0" />
-    <plugin name="cordova-plugin-device" spec="^1.1.7" />
-    <plugin name="cordova-plugin-geolocation" spec="^3.0.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^1.5.0" />
-    <plugin name="cordova-plugin-network-information" spec="^1.3.4" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.1.3" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.2.2" />
-    <plugin name="de.appplant.cordova.plugin.local-notification" spec="^0.8.5" />
-    <plugin name="phonegap-plugin-push" spec="^1.8.4">
+    <plugin name="cordova-plugin-device" spec="^1.1.6" />
+    <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.5.0" />
+    <plugin name="cordova-plugin-network-information" spec="^1.3.3" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.1.3" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="^0.8.4" />
+    <plugin name="phonegap-plugin-push" spec="~1.8.2">
         <variable name="SENDER_ID" value="wide-ceiling-143919" />
     </plugin>
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.0.7" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" />
 </widget>
