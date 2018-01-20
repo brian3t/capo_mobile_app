@@ -411,6 +411,20 @@ function ajax_timeout_my_offer(model) {
 }
 
 /**
+ * Convert jQuery serializeArray() to Assoc array
+ * e.g. [0=>['name'=>'email', 'value'=>'a@b.com']
+ * will become
+ * ['email'=>'a@b.com']
+ */
+function jq_serial_array_to_assoc(arr) {
+    var result = {};
+    arr.forEach(function (e) {
+       result[e.name] = e.value;
+    });
+    return result;
+}
+
+/**
  * Ratchet modal
  * @param display show/hide
  * Usage: $('#modal_div').rmodal();
@@ -421,7 +435,7 @@ $.fn.rmodal = function (display) {
     }
     if (display === 'show') {
         ratchet_popover_dismiss();
-        $(this).show('slide', { direction: 'down' }, 1000).addClass('active');
+        $(this).show(2000).addClass('active');
     } else if (display === 'hide') {
         $('div.modal.active').slideUp(function () {
             $(this).removeClass('active');

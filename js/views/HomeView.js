@@ -73,12 +73,13 @@ app.views.HomeView = Backbone.View.extend({
                         window.localStorage.setItem("cuser", JSON.stringify(res));
                         if (res.hasOwnProperty('commuterData')) {
                             for (var key in res.commuterData) {
-                                if (!res.commuterData.hasOwnProperty(key)){
+                                if (!res.commuterData.hasOwnProperty(key)) {
                                     continue;
                                 }
-                                if (res.commuterData[key] == null){
-                                   console.info("Null key: "); console.info(key);
-                                   continue;
+                                if (res.commuterData[key] == null) {
+                                    console.info("Null key: ");
+                                    console.info(key);
+                                    continue;
                                 }
                                 if (['supFName', 'commuterName', 'empName', 'empState', 'supLName', 'lastName', 'supFName', 'comModeDesc',
                                         'firstName', 'empCity'].indexOf(key) !== -1) {
@@ -107,9 +108,7 @@ app.views.HomeView = Backbone.View.extend({
                         array_keys_to_underscore(res);
                         app.cuser.save(res, {
                             forceRefresh: true, success: function (response) {
-                                // if (_.isObject(response)){
-                                //     console.log(response);
-                                // }
+                                app.cuser.fetch({success: app.menuView.hide_or_show_incen_menu});
                             }
                         });
 
@@ -123,13 +122,19 @@ app.views.HomeView = Backbone.View.extend({
                         app.router.dashboard();
 
                     } else {
-                        homeview_class.$submit_button.removeAttr("disabled");
-                        app.utils.misc.show_message(
-                            'You have entered an invalid username and password, please try again', // message
-                            null, // callback
-                            'Invalid Login', // title
-                            'Ok'                  // buttonName
-                        );
+                        if (res.statusCode === 0 && res.statusDescription === 'This account has not yet been activated.') {
+                            $(app.homeView.el).find('#activate_account_modal').rmodal();
+                            return;
+                        }
+                        else {
+                            homeview_class.$submit_button.removeAttr("disabled");
+                            app.utils.misc.show_message(
+                                'You have entered an invalid username and password, please try again', // message
+                                null, // callback
+                                'Invalid Login', // title
+                                'Ok'                  // buttonName
+                            );
+                        }
                     }
 
                     homeview_class.$submit_button.removeAttr("disabled");
@@ -172,6 +177,93 @@ app.views.HomeView = Backbone.View.extend({
                     this.$password.val(window.localStorage.getItem('pasword'));
                 }
             }
+        },
+        activate_account: function (btn) {
+            if (this.verify_reg_acnt(btn)) {
+                console.log("all ok");
+                var form = $(btn).closest('form');
+                var form_vars = jq_serial_array_to_assoc(form.serializeArray());
+                $.extend(form_vars, {action: "activateNewCommuter", siteId: 10001, username: $('#username').val(), commuterId: 12345});//todob get commuterID
+                console.info(form_vars);
+                $('.page').addClass('whirl traditional');
+                var self = this;
+                $.ajax(config.commuterUrl + 'mobileapicontroller', {
+                    data: form_vars, error: function (data) {
+                        console.error(data);
+                    }, success: function (data) {
+                        console.info(data);
+                        if (data.hasOwnProperty('activation') && data.activation === 'failed') {
+                            app_alert('We apologize but there has been an error in processing your account activation.  Please call Commuter Connections at 1-800-745-RIDE for assistance with your account.');
+                        } else {
+                            app_toast('Validation successful. Logging you in...');
+                            setTimeout(function () {
+                                    self.login.apply(self);
+                                    $('#activate_account_modal').rmodal('hide');
+                                }, 2000
+                            );
+                        }
+                    }
+                }).done(function () {
+                    $('.page').removeClass('whirl traditional');
+                })
+            }
+        },
+        verify_reg_acnt: function (btn) {
+            var formObj = $(btn).closest('form').get(0);
+            // check password for validity and compare with confirmation password
+            if (formObj.password1.value !== "" && formObj.password1.value != null) {
+                if (formObj.password1.value.length < 8) {
+                    app_alert("Password must contain at least eight alphanumeric characters!");
+                    formObj.password1.focus();
+                    return false;
+                }
+                re = /^([a-zA-Z0-9_]+)$/;
+                if (!re.test(formObj.password1.value)) {
+                    app_alert("Password must be alphanumeric only.");
+                    formObj.password1.focus();
+                    return false;
+                }
+                re = /[0-9]/;
+                if (!re.test(formObj.password1.value)) {
+                    app_alert("Password must contain at least one number (0-9).");
+                    formObj.password1.focus();
+                    return false;
+                }
+                re = /[a-zA-Z]/;
+                if (!re.test(formObj.password1.value)) {
+                    app_alert("Password must contain at least one letter (a-z).");
+                    formObj.password1.focus();
+                    return false;
+                }
+            } else {
+                app_alert("Please enter a password.");
+                formObj.password1.focus();
+                return false;
+            }
+            if (formObj.password2.value === "" || formObj.password2.value == null) {
+                app_alert("Please enter confirmation password.\n(Must be same as password)");
+                formObj.password2.focus();
+                return false;
+            }
+            if (formObj.password1.value !== "" && formObj.password1.value !== formObj.password2.value) {
+                app_alert("Password and confirmation password must be same.");
+                formObj.password2.focus();
+                return false;
+            }
+
+            // check password recovery question
+            if (formObj.pwdQuestion.value === "") {
+                app_alert("Please select a password recovery question.");
+                formObj.pwdQuestion.focus();
+                return false;
+            }
+            // check password recovery answer
+            if (formObj.pwdAnswer.value === "") {
+                app_alert("Please enter password recovery answer.");
+                formObj.pwdAnswer.focus();
+                return false;
+            }
+            return true;
         },
         dom_ready: function () {
             var remember = localStorage.getItem('remember');

@@ -1,16 +1,20 @@
 const IS_DEBUG = false;
 // const IS_DEBUG = true;
 const GMAP_KEY = 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E';
+const GMAP_KEY_IECOM = 'AIzaSyBY-L-HhMKsNOeMDqH1kJZP7hS3G2SATWQ';//iecommuter key
+
 // const CLEAR_LOCAL_STORAGE = true;
 const CLEAR_LOCAL_STORAGE = false;
 const LOCAL_NOTE_IDLE_ID = 8;
 const LOCAL_NOTE_IDLE_DELAY = 10 * 1000 * 60; // 10 minutes
-
+const LOCAL_NOTE_OFFER_ACCEPTED = 1;
 
 var app = {
     views: {}, models: {}, routers: {}, utils: {}, adapters: {}, request_markers: [], driver_markers: [],
     timeout_count: 0,//for ajax timeout ()
     employer_data: {},
+    google_routes: {},
+    google_directions: {},
     heartbeat: {interval: -1},
     start_heartbeat: function () {
         navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -39,12 +43,12 @@ var app = {
             return false;
         }
         var r = map.directionsResult.request;
-        launchnavigator.navigate([r.destination.location.lat(),r.destination.location.lng()], function () {
+        launchnavigator.navigate([r.destination.location.lat(), r.destination.location.lng()], function () {
             console.log('bye bye');
         }, function () {
             app_alert("Can not launch Maps app. Please double check that your Maps app is working.");
         }, {
-            start: [r.origin.location.lat(),r.origin.location.lng()]
+            start: [r.origin.location.lat(), r.origin.location.lng()]
         });
     }
 };
@@ -53,12 +57,32 @@ var current_pos = {};
 var config = {
     // restUrl: "https://api.carpoolnow.mediabeef.com/v1/",
     restUrl: 'https://api.carpoolnow.commuterconnections.org/v1/',
-    commuterUrl: 'https://tdm.commuterconnections.org/mwcog/'
+    commuterUrl: 'https://tdm.commuterconnections.org/mwcog/',
+    // commuterUrl: '//mwcog.mediabeef.com/mwcog/'
 };
 if (typeof IS_LOCAL !== "undefined" && IS_LOCAL) {
     // config.restUrl = 'https://api.capoapi/v1/';
     // config.restUrl = 'https://10.55.39.34/v1/';
-    config.restUrl = 'https://' + IP_ADDRESS + '/v1/';
+    config.restUrl = '//' + IP_ADDRESS + '/v1/';
+    // config.commuterUrl = '//mwcog.mediabeef.com/mwcog/';
+    setTimeout(function () {
+        $('#username').val('ngxtri01').text('ngxtri01');
+        $('#password').val('cTrapok01');
+        app.homeView.login();
+        $.post(config.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
+        setTimeout(2000, function () {
+            app.router.request_ride();
+            app.router.navigate('/request_ride');
+        });
+        /*setTimeout(function () {
+            $(app.homeView.el).find('#activate_account_modal').rmodal();
+            $('#password1').val('aaaa1234').text('aaaa1234');
+            $('#password2').val('aaaa1234').text('aaaa1234');
+            $('#pwdQuestion').val('quest').text('quest');
+            $('#pwdAnswer').val('answer').text('answer');
+
+        },1000);*/
+    }, 500);
 }
 
 var permissions;
@@ -251,14 +275,14 @@ var capp = {
 //
             onSuccess: function (position) {
                 var extra_param = {};
-                console.log('Latitude: ' + position.coords.latitude + '\n' +
+                /*console.log('Latitude: ' + position.coords.latitude + '\n' +
                     'Longitude: ' + position.coords.longitude + '\n' +
                     'Altitude: ' + position.coords.altitude + '\n' +
                     'Accuracy: ' + position.coords.accuracy + '\n' +
                     'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
                     'Heading: ' + position.coords.heading + '\n' +
                     'Speed: ' + position.coords.speed + '\n' +
-                    'Timestamp: ' + position.timestamp + '\n');
+                    'Timestamp: ' + position.timestamp + '\n');*/
                 current_pos = position.coords;
                 var apns_device_reg_id = localStorage.getItem('registrationId');
                 if (!_.isNull(apns_device_reg_id)) {
@@ -287,16 +311,16 @@ var capp = {
                 // alert('Error Code: ' + error.code + '\n' + 'Message: ' + error.message + '\n');
 
                 permissions = cordova.plugins.permissions;
-                if(typeof(permissions) === 'object') {
-                 permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
-                     if ( status.hasPermission ) {
-                         console.log("geolocation active");
-                     }
-                     else {
-                         console.log("geolocation not active - send request");
-                         permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, permissionsSuccess, permissionsError);
-                     }
-                 });
+                if (typeof(permissions) === 'object') {
+                    permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function (status) {
+                        if (status.hasPermission) {
+                            console.log("geolocation active");
+                        }
+                        else {
+                            console.log("geolocation not active - send request");
+                            permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, permissionsSuccess, permissionsError);
+                        }
+                    });
                 }
 
             }
@@ -310,17 +334,17 @@ var capp = {
             // });
 
             permissions = cordova.plugins.permissions;
-            if(typeof(permissions) === 'object') {
-                 permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
-                     if ( status.hasPermission ) {
-                         console.log("geolocation active");
-                     }
-                     else {
-                         console.log("geolocation not active - send request");
-                         permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, permissionsSuccess, permissionsError);
-                     }
-                 });
-             }
+            if (typeof(permissions) === 'object') {
+                permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function (status) {
+                    if (status.hasPermission) {
+                        console.log("geolocation active");
+                    }
+                    else {
+                        console.log("geolocation not active - send request");
+                        permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, permissionsSuccess, permissionsError);
+                    }
+                });
+            }
 
             setupPush();
             document.addEventListener("pause", function () {
@@ -379,7 +403,7 @@ var capp = {
             backboneInit();
             // StatusBar.hide();
             // $('body').height($('body').height() + 20);
-            if (typeof device === 'object' && device.hasOwnProperty('platform') && device.platform === 'iOS'){
+            if (typeof device === 'object' && device.hasOwnProperty('platform') && device.platform === 'iOS') {
                 $('head').append('<link rel="stylesheet" type="text/css" href="css/compass/stylesheets/ios.css">');
             }
         }
@@ -531,13 +555,11 @@ function testlocal() {
 
 }
 
-function permissionsSuccess( status )
-{
-    if( !status.hasPermission ) permissionsError();
+function permissionsSuccess(status) {
+    if (!status.hasPermission) permissionsError();
 }
 
-function permissionsError()
-{
+function permissionsError() {
     console.log('TODO: toast message telling user geolocation is off');
 }
 

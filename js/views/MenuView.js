@@ -6,7 +6,7 @@ app.views.MenuView = Backbone.View.extend({
         this.model.on("change update", this.render_or_not_render, this);
     },
     render_or_not_render: function (model) {
-        console.info(model);
+        // console.info(model);
         if (_.size(model.changed) > 2){
             this.render();
         }//otherwise it's probably just app heartbeat
@@ -15,6 +15,8 @@ app.views.MenuView = Backbone.View.extend({
         if (!_.isObject(app.cuser)) {
             return this;
         }
+        var self = this;
+        app.cuser.fetch({success: self.hide_or_show_incen_menu});
         this.$el.html(this.template($.extend({}, this.model.attributes, {commuter_data: this.model.commuter_data})));
         return this;
     },
@@ -28,7 +30,7 @@ app.views.MenuView = Backbone.View.extend({
     logout: function (e) {
         var self = this;
         app_confirm("Are you sure you want to log out?", function (response) {
-            if (response == true || response == 1) {
+            if (response === true || response === 1) {
                 app.reset_user();
                 self.back();
             }

@@ -52,7 +52,6 @@ app.views.Request_ride_view = Backbone.View.extend({
         var $work_input = $(':input[title="work"]');
 
         var self = this;
-        //todob debugging
         // window.setTimeout(function(){self.request_ride()}, 3000);
     },
     dom_ready: function () {
@@ -106,6 +105,9 @@ app.views.Request_ride_view = Backbone.View.extend({
     },
     //functions
     address_selected: function (event) {
+        if (_.isObject(map.directionsDisplayTransit)){
+            map.directionsDisplayTransit.setMap(null);
+        }
         try {
             if (_.isObject(map.pickup_marker)) {
                 map.pickup_marker.setMap(null)
@@ -144,7 +146,7 @@ app.views.Request_ride_view = Backbone.View.extend({
                 $('input[name="' + address_to_pick + '_address"]').val(sel_input.val()).trigger('change');
             }
         }
-        $('div.modal').find('header>a').trigger('click');
+        $(parent_content).closest('div.modal').removeClass('active');
     },
 
     selecting_address: function (event) {
@@ -271,6 +273,7 @@ app.views.Request_ride_view = Backbone.View.extend({
             map.direction.route(dir_request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     map.directionsDisplay.setDirections(result);
+                    capp.event_bus.trigger('mapDirectionDisplayDone');
                     var bounds = new google.maps.LatLngBounds();
                     bounds.extend(app.cuser.pickup_location.geometry.location);
                     bounds.extend(app.cuser.dropoff_location.geometry.location);
@@ -282,6 +285,44 @@ app.views.Request_ride_view = Backbone.View.extend({
             $('#request_ride').slideUp();
         }
 
+    },
+    suggest_transit: function () {
+        if (!_.isObject(app.my_request_poller) || !app.my_request_poller.active()) return false;
+        var self = this;
+        app_confirm('Would you like to consider transit options?', function (response) {
+            if (!response) {
+                return false;
+            }
+            //now transit mode. gmaps doesn't allow direct call. Must make ajax call
+            var departure_time = moment().format('X');
+            var request = {
+                origin: app.cuser.dropoff_location.geometry.location.lat() + ',' + app.cuser.dropoff_location.geometry.location.lng(),
+                destination: app.cuser.pickup_location.geometry.location.lat() + ',' + app.cuser.pickup_location.geometry.location.lng(),
+                // key: GMAP_KEY_IECOM,
+                // Note that Javascript allows us to access the constant
+                // using square brackets and a string value as its
+                // "property."
+                travelMode: 'TRANSIT',
+                provideRouteAlternatives: true,
+                transitOptions: {departureTime: new Date(departure_time)}
+            };
+            var self2 = self;
+            map.direction.route(request, function (result, status) {
+                if (status === 'OK') {
+                    map.google_directions = result;
+                    self2.cancel_request_ride();
+                    self2.listenToOnce(capp.event_bus, 'mapDirectionDisplayDone', function () {
+                        map.directionsDisplayTransit = new google.maps.DirectionsRenderer({
+                            suppressMarkers: true
+                        });
+                        map.directionsDisplayTransit.setMap(map);
+                        map.directionsDisplayTransit.setDirections(map.google_directions);
+                    })
+                } else {
+                    app_toast('Error getting transit options. Please try again later');
+                }
+            });
+        }, 'Consider ')
     },
     /**
      * Request a ride
@@ -316,6 +357,7 @@ app.views.Request_ride_view = Backbone.View.extend({
                     self.cancel_request_ride('System');
                 });
                 app.my_request_poller.start({delay: 240000, data: {cuser_id: app.cuser.id}});
+                setTimeout(self.suggest_transit(self), 600000); //10 minutes
             }
         });
 
@@ -377,7 +419,7 @@ app.views.Request_ride_view = Backbone.View.extend({
         trackButton('Agree to a driver match');
         var element = $(e.targetElement);
         var rider_id = $(e.target.parentElement).find('input[class="cuser_id"]').val();
-        app.request.save({"status" : 'accepted'});
+        app.request.save({"status": 'accepted'});
         //tell the API that the offer is accepted
         $.ajax(config.restUrl + 'offer/' + rider_id, {
             method: 'PATCH',
@@ -401,7 +443,7 @@ app.views.Request_ride_view = Backbone.View.extend({
         if (_.isEmpty(by_whom)) {
             by_whom = 'You';
         }
-        if (by_whom == 'You') {
+        if (by_whom === 'You') {
             app_toast('You have cancelled your ride request!');
         }
         else {
@@ -421,7 +463,9 @@ app.views.Request_ride_view = Backbone.View.extend({
         $('input [name="dropoff_address"]').val('');
         app.request.save({status: "fulfilled"}, {
             success: function () {
-                setTimeout(function(){self.set_status('idle')}, 15000);//wait so that the offer is not deleted yet
+                setTimeout(function () {
+                    self.set_status('idle')
+                }, 15000);//wait so that the offer is not deleted yet
             }
         });
     },

@@ -402,12 +402,17 @@ app.views.View_riders_view = Backbone.View.extend({
                         $('#rider_info_with_eta').html(view.rider_with_ETA_view.render());
                         if (view.status != 'accepted') {
                             view.set_status('driver_enroute');
-                            cordova.plugins.notification.local.schedule({
-                                id: _.random(1, 65535),
-                                title: "Match approved",
-                                text: "Your match request with " + app.cur_rider.get('name') + " has been approved!  Click here to return to the app and to get directions to the pickup location.",
-                                data: model
-                            });
+                            if (app.offer.changedAttributes() && app.offer.changedAttributes().hasOwnProperty('status')) {//this is the first time offer status changed to 'accepted'
+                                cordova.plugins.notification.local.schedule({
+                                    id: LOCAL_NOTE_OFFER_ACCEPTED,
+                                    title: "Match approved",
+                                    text: "Your match request with " + app.cur_rider.get('name') + " has been approved!  Click here to return to the app and to get directions to the pickup location.",
+                                    data: model,
+                                    trigger: {
+                                        count: 1
+                                    }
+                                });
+                            }
                         }
                         var r = app.cur_rider.get('request');
                         var dir_request = {

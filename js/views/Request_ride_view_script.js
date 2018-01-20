@@ -179,9 +179,12 @@ function request_initMap() {
     });
     map.directionsDisplay.setMap(map);
 
-    var home_address = app.cuser.addresses.filter(function (v) {
-        return v.addrType == "HOME";
-    });
+    var home_address = '';
+    if (_.isObject(app.cuser.addresses)) {
+        home_address = app.cuser.addresses.filter(function (v) {
+            return v.addrType == "HOME";
+        });
+    }
     if (typeof home_address == 'object' && home_address.length > 0) {
         home_address = home_address[0];
         app.cuser.home_address.full_address = commuter_addr_to_full_addr(home_address);
@@ -196,9 +199,12 @@ function request_initMap() {
         );
     }
 
-    var work_address = app.cuser.addresses.filter(function (v) {
-        return v.addrType == "WORK";
-    });
+    var work_address = '';
+    if (_.isObject(app.cuser.addresses)) {
+        work_address = app.cuser.addresses.filter(function (v) {
+            return v.addrType == "WORK";
+        });
+    }
     if (typeof work_address == 'object' && work_address.length > 0) {
         work_address = work_address[0];
         app.cuser.work_address.full_address = commuter_addr_to_full_addr(work_address);
